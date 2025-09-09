@@ -36,7 +36,7 @@
     .section {
       padding: 3rem 1.5rem;
     }
-    .content h1, .content h2, .content h3 {
+    .content h1, .content h2, .content h3, .content h4 {
         font-family: 'Google Sans', sans-serif;
         font-weight: 500;
     }
@@ -46,7 +46,7 @@
     .results-table {
         width: 100%;
         border-collapse: collapse;
-        margin: 2rem 0;
+        margin: 1rem 0;
         font-size: 0.85em;
     }
     .results-table th, .results-table td {
@@ -78,7 +78,6 @@
         border-radius: 5px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    /* Styles for the collapsible section */
     .collapsible-content {
         max-height: 0;
         overflow: hidden;
@@ -86,7 +85,7 @@
         margin-top: 0 !important;
     }
     .collapsible-content.is-active {
-        max-height: 1000px; /* Large enough to fit content */
+        max-height: 1000px;
         margin-top: 2rem !important;
     }
     @media screen and (max-width: 768px) {
@@ -223,41 +222,23 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Method</h2>
+        <h2 class="title is-3">The Core Challenge: The Data Bottleneck</h2>
       </div>
     </div>
     
     <div class="columns is-centered">
         <div class="column is-four-fifths">
-            <h3 class="title is-4 has-text-centered">Progressive Curriculum</h3>
-            <img src="https://i.imgur.com/eBf2K5t.png" alt="Method Diagram" style="width: 100%; height: auto; display: block; margin: 0 auto; border-radius:10px;">
-            <div class="content has-text-justified" style="margin-top: 2rem;">
-              <p>
-                LLMs cannot learn parallel thinking with RL from scratch because they have not seen such behavior during pre-training. To solve this "cold-start" problem, we propose a progressive, multi-stage training approach.
-              </p>
-              <ul>
-                <li><strong>Stage 1: Cold-Start SFT on Easy Math</strong>: We begin with SFT on simpler problems. This stage uses our created Parallel-GSM8K dataset to effectively teach the model the basic format of parallel thinking.</li>
-                <li><strong>(Optional) Stage 2: Small-Scale RL</strong>: To stabilize format learning, we perform small-scale RL on the same easy question set.</li>
-                <li><strong>Stage 3: Large-Scale RL on General Math</strong>: Finally, the model transitions to RL on more difficult tasks (like the DAPO dataset) to generalize this ability.</li>
-              </ul>
-            </div>
-        </div>
-    </div>
-    
-    <div class="columns is-centered" style="margin-top: 2rem;">
-        <div class="column is-four-fifths">
-            <h3 class="title is-4 has-text-centered">Data Pipeline: Overcoming the Bottleneck</h3>
             <div class="content has-text-justified">
                 <p>
-                    A significant challenge is collecting high-quality parallel thinking data, which is extremely rare in natural text distributions. Prior work relies on complex and costly data pipelines.
+                    A significant challenge in teaching parallel thinking is collecting high-quality data, which is extremely rare in natural text distributions. Prior work relies on complex and costly data pipelines to synthesize such data.
                 </p>
                 <article class="message is-info">
                   <div class="message-body">
-                    <strong>Key Finding</strong>: Our method is based on the discovery that it is easy to generate parallel thinking data for simple tasks, but extremely difficult for complex ones.
+                    <strong>Our Key Finding</strong>: We discovered that it is easy to generate parallel thinking data for simple tasks, but extremely difficult for complex ones.
                   </div>
                 </article>
                 <p>
-                    The table below shows this clearly: a powerful model can generate valid parallel traces for 83.7% of simple GSM8K problems, but fails completely (0.0%) on challenging DAPO problems. Based on this, we created the <strong>Parallel-GSM8K</strong> dataset by using simple prompting on easy tasks. This dataset is strategically used only to teach the model the <em>format</em> of parallel thinking, enabling the subsequent, more efficient RL stages.
+                    The table below illustrates this: a powerful model can generate valid parallel traces for 83.7% of simple GSM8K problems, but fails completely (0.0%) on challenging DAPO problems. Based on this, we created the <strong>Parallel-GSM8K</strong> dataset by using simple prompting on easy tasks. This dataset is strategically used only to teach the model the <em>format</em> of parallel thinking, which solves the data problem and enables our efficient reinforcement learning framework.
                 </p>
             </div>
             <table class="table is-bordered is-fullwidth is-striped" style="margin-top:1rem;">
@@ -272,100 +253,122 @@
             <p class="is-size-7 has-text-centered">Table 1 from the paper: Data quality comparison.</p>
         </div>
     </div>
-
-    <div class="columns is-centered is-vcentered" style="margin-top: 4rem;">
-        <div class="column is-half">
-            <h3 class="title is-4">Model Variants: Causal vs. Structured</h3>
-            <div class="content has-text-justified">
-                <p>
-                    We explore two settings for learning parallel thinking. The standard approach uses a normal <strong>Causal Model</strong> (termed Parallel-R1-Seen) without architectural changes.
-                </p>
-                <p>
-                    We also introduce a <strong>Structured Variant</strong> (termed Parallel-R1-Unseen) which incorporates explicit inductive biases to enforce path isolation through path-window masking and multiverse position encodings.
-                </p>
-            </div>
-        </div>
-        <div class="column is-half">
-            <img src="https://i.imgur.com/B9B1I1i.png" alt="Illustration of the structured attention mask and position IDs for the structured model variant.">
-            <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 2 from the paper: Structured attention mask and position IDs.</p>
-        </div>
-    </div>
   </div>
 </section>
 
 <section class="section">
     <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Our Solution: The Parallel-R1 Framework</h2>
+            </div>
+        </div>
+        
+        <div class="columns is-centered">
+            <div class="column is-four-fifths">
+                <h3 class="title is-4 has-text-centered">Progressive Curriculum</h3>
+                <img src="https://i.imgur.com/eBf2K5t.png" alt="Method Diagram" style="width: 100%; height: auto; display: block; margin: 0 auto; border-radius:10px;">
+                <div class="content has-text-justified" style="margin-top: 2rem;">
+                  <p>
+                    To solve the "cold-start" problem, we propose a progressive, multi-stage training approach:
+                  </p>
+                  <ul>
+                    <li><strong>Stage 1: Cold-Start SFT on Easy Math</strong>: We begin with SFT on our Parallel-GSM8K dataset to effectively teach the model the basic format of parallel thinking.</li>
+                    <li><strong>(Optional) Stage 2: Small-Scale RL</strong>: To stabilize format learning, we perform small-scale RL on the same easy question set.</li>
+                    <li><strong>Stage 3: Large-Scale RL on General Math</strong>: Finally, the model transitions to RL on more difficult tasks to generalize this ability.</li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="columns is-centered is-vcentered" style="margin-top: 4rem;">
+            <div class="column is-half">
+                <h3 class="title is-4">Model Variants: Causal vs. Structured</h3>
+                <div class="content has-text-justified">
+                    <p>
+                        We explore two settings. The standard approach uses a normal <strong>Causal Model</strong> (Parallel-R1-Seen). We also introduce a <strong>Structured Variant</strong> (Parallel-R1-Unseen) which incorporates explicit inductive biases to enforce path isolation through path-window masking and multiverse position encodings.
+                    </p>
+                </div>
+            </div>
+            <div class="column is-half">
+                <img src="https://i.imgur.com/B9B1I1i.png" alt="Illustration of the structured attention mask and position IDs.">
+                <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 2 from the paper: Structured attention mask.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="background-color: #f9f9f9;">
+    <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Results & Key Findings</h2>
+          <h2 class="title is-3">Experimental Results and Analysis</h2>
         </div>
       </div>
 
-    <div class="columns is-centered">
-        <div class="column" style="overflow-x: auto;">
-            <h3 class="title is-4 has-text-centered">Main Results</h3>
-            <p class="has-text-centered">
-              Performance comparison for the Qwen-3-4B-Base model. Our progressive Parallel-R1 framework consistently outperforms all baselines. The top-performing causal variant, <strong>Parallel-R1-Seen</strong>, achieves the highest average score of 48.9.
-            </p>
-            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth results-table">
+    <div class="columns is-centered is-vcentered" style="margin-top: 2rem;">
+        <div class="column is-half">
+            <h4 class="title is-4">Main Results</h4>
+            <div class="content has-text-justified">
+                <p>Our progressive Parallel-R1 framework consistently outperforms strong baselines. The top-performing causal variant, <strong>Parallel-R1-Seen</strong>, achieves an average score of 48.9 across four challenging math benchmarks, a significant improvement over the baseline GRPO model's 45.1.</p>
+                <p>The full results show consistent gains, particularly on complex reasoning tasks like AIME25 and AMC23.</p>
+            </div>
+        </div>
+        <div class="column is-half" style="overflow-x: auto;">
+             <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth results-table">
                 <thead>
                     <tr>
-                        <th rowspan="2">Method</th> <th rowspan="2"># Parallel (%)</th> <th colspan="2">AIME25</th> <th colspan="2">AIME24</th> <th colspan="2">AMC23</th> <th rowspan="2">MATH (Mean@1)</th> <th rowspan="2">Avg.</th>
+                        <th rowspan="2">Method</th> <th rowspan="2"># Par. (%)</th> <th colspan="2">AIME25</th> <th colspan="2">AMC23</th> <th rowspan="2">Avg.</th>
                     </tr>
                     <tr>
-                        <th>Mean@16</th> <th>Pass@16</th> <th>Mean@16</th> <th>Pass@16</th> <th>Mean@16</th> <th>Pass@16</th>
+                        <th>M@16</th> <th>P@16</th> <th>M@16</th> <th>P@16</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>Qwen3-4B-Base</td><td>0.0</td><td>1.3</td><td>10.2</td><td>2.9</td><td>16.5</td><td>8.1</td><td>51.2</td><td>13.9</td><td>6.6</td></tr>
-                    <tr style="background-color: #fafafa;"><td colspan="10" style="font-style: italic; text-align: left;"><strong>SFT + Parallel</strong></td></tr>
-                    <tr><td>Parallel-SFT-Seen</td><td>95.6</td><td>8.0</td><td>29.8</td><td>10.6</td><td>26.4</td><td>48.9</td><td>79.2</td><td>76.6</td><td>36.0</td></tr>
-                    <tr><td>Parallel-SFT-Unseen</td><td>95.6</td><td>5.2</td><td>20.9</td><td>8.5</td><td>26.7</td><td>41.7</td><td>80.1</td><td>71.5</td><td>31.7</td></tr>
-                    <tr style="background-color: #fafafa;"><td colspan="10" style="font-style: italic; text-align: left;"><strong>RL Approach</strong></td></tr>
-                    <tr><td>GRPO (DAPO)</td><td>0.0</td><td>14.8</td><td>32.4</td><td>18.5</td><td>30.6</td><td>63.6</td><td>85.1</td><td>83.5</td><td>45.1</td></tr>
-                    <tr><td>&nbsp;&nbsp; + RL on GSM8K</td><td>0.0</td><td>13.3</td><td>26.3</td><td>18.8</td><td>34.9</td><td>66.4</td><td>82.2</td><td>82.6</td><td>45.3</td></tr>
-                    <tr style="background-color: #e9f5ff;"><td>Parallel-R1-Seen</td><td>27.3</td><td class="highlight-best">19.2</td><td>38.9</td><td class="highlight-best">19.4</td><td class="highlight-best">37.1</td><td class="highlight-best">70.5</td><td>85.0</td><td class="highlight-best">86.7</td><td class="highlight-best">48.9</td></tr>
-                    <tr><td>Parallel-R1-Unseen (S1)</td><td>13.6</td><td>17.7</td><td>37.8</td><td>18.3</td><td>33.2</td><td>69.7</td><td>88.9</td><td>82.6</td><td>47.1</td></tr>
-                    <tr><td>Parallel-R1-Unseen (S2)</td><td class="highlight-best">63.0</td><td>19.0</td><td class="highlight-best">42.2</td><td>16.3</td><td>31.8</td><td>67.5</td><td class="highlight-best">91.5</td><td>84.5</td><td>46.8</td></tr>
+                    <tr><td>GRPO (DAPO)</td><td>0.0</td><td>14.8</td><td>32.4</td><td>63.6</td><td>85.1</td><td>45.1</td></tr>
+                    <tr style="background-color: #e9f5ff;"><td><strong>Parallel-R1-Seen</strong></td><td>27.3</td><td class="highlight-best">19.2</td><td>38.9</td><td class="highlight-best">70.5</td><td>85.0</td><td class="highlight-best">48.9</td></tr>
                 </tbody>
-                <caption class="is-size-7" style="caption-side: bottom; text-align: center; margin-top: 0.5rem;">Table 2 from the paper: Performance comparison on mathematical reasoning benchmarks.</caption>
-            </table>
+             </table>
+             <p class="is-size-7 has-text-centered">A condensed version of Table 2 from the paper.</p>
         </div>
     </div>
     
-    <div class="columns is-centered" style="margin-top: 4rem;">
-        <div class="column">
-            <h3 class="title is-4 has-text-centered">Ablation on Reward Modeling</h3>
-             <p class="has-text-centered">
-              To find how to effectively stimulate parallel thinking, we tested several reward strategies on our structured model. We found that an alternating approach provides the best balance between a high parallel ratio and strong performance.
-            </p>
+    <div class="columns is-centered is-vcentered" style="margin-top: 4rem;">
+         <div class="column is-half">
+            <h4 class="title is-4">Ablation on Reward Modeling</h4>
+            <div class="content has-text-justified">
+                <p>To find how to effectively stimulate parallel thinking, we tested several reward strategies. We found that optimizing for accuracy alone results in a low parallel ratio (13.6%), while rewarding only for parallelism hurts performance.</p>
+                <p>An <strong>alternating reward</strong> schedule provides the best balance, achieving a high parallel ratio (63.0%) while also reaching the highest performance on challenging benchmarks like AIME25.</p>
+            </div>
+        </div>
+       <div class="column is-half">
             <table class="table is-bordered is-fullwidth results-table">
                 <thead>
-                    <tr><th>Training Configuration</th><th>Parallel Ratio (%)</th><th>AIME 25</th><th>AIME 24</th><th>AMC 23</th><th>MATH</th></tr>
+                    <tr><th>Reward Config</th><th>Par. Ratio (%)</th><th>AIME 25</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>Accuracy Only</td><td>13.6</td><td>17.7</td><td>18.3</td><td>69.7</td><td>82.6</td></tr>
-                    <tr><td>Parallel Only</td><td>80.3</td><td>17.7</td><td>15.2</td><td>59.4</td><td>81.7</td></tr>
-                    <tr style="background-color: #e9f5ff;"><td><strong>Alternating Acc./Parallel</strong></td><td class="highlight-best">63.0</td><td class="highlight-best">19.0</td><td>16.3</td><td>67.5</td><td class="highlight-best">84.5</td></tr>
+                    <tr><td>Accuracy Only</td><td>13.6</td><td>17.7</td></tr>
+                    <tr><td>Parallel Only</td><td>80.3</td><td>17.7</td></tr>
+                    <tr style="background-color: #e9f5ff;"><td><strong>Alternating</strong></td><td class="highlight-best">63.0</td><td class="highlight-best">19.0</td></tr>
                 </tbody>
-                <caption class="is-size-7" style="caption-side: bottom; text-align: center; margin-top: 0.5rem;">Table 4 from the paper: Ablation study on reward modeling for the Parallel-R1-Unseen model.</caption>
             </table>
+            <p class="is-size-7 has-text-centered">A condensed version of Table 4 from the paper.</p>
         </div>
     </div>
 
     <div class="columns is-centered is-vcentered" style="margin-top: 4rem;">
         <div class="column is-half">
-            <h3 class="title is-4">Finding: Evolution of Behavior</h3>
+            <h4 class="title is-4">Finding: Evolution of Behavior</h4>
             <div class="content has-text-justified">
                 <p>
-                  Our analysis reveals a clear strategic evolution: the model initially leverages parallel paths for computational exploration, but as it gains proficiency, its strategy shifts towards using them for multi-perspective verification to confirm the final answer. This is shown by the relative position of the <code>&lt;Parallel&gt;</code> block moving later in the generation process as training progresses.
+                  Our analysis reveals a clear strategic evolution: the model initially leverages parallel paths for <strong>exploration</strong>, but as it gains proficiency, its strategy shifts towards using them for <strong>verification</strong>. This is shown by the relative position of the parallel thinking block moving later in the generation process as training progresses.
                 </p>
                  <button class="button is-info is-outlined is-small" id="toggle-cases-btn" style="margin-top: 1rem;">Show Supporting Case Studies</button>
             </div>
         </div>
         <div class="column is-half">
             <img src="https://i.imgur.com/iC5uS9u.png" alt="Graph showing the relative position of the parallel block during RL training">
-            <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 3 from the paper: Positional dynamics of the <code>&lt;Parallel&gt;</code> block.</p>
+            <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 3 from the paper.</p>
         </div>
     </div>
 
@@ -374,14 +377,12 @@
             <div class="column is-four-fifths">
                 <div class="case-study-container">
                     <div class="case-study">
-                        <h4 class="title is-5 has-text-centered">Early Stage: Exploration</h4>
-                        <img src="https://i.imgur.com/u15j6mC.png" alt="Case study of an early-stage model using parallel thinking for exploration.">
-                        <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 5 from the paper: An early-stage model explores two distinct algebraic methods to find possible answers.</p>
+                        <h5 class="title is-5 has-text-centered">Early Stage: Exploration</h5>
+                        <img src="https://i.imgur.com/u15j6mC.png" alt="Case study of an early-stage model.">
                     </div>
                     <div class="case-study">
-                        <h4 class="title is-5 has-text-centered">Late Stage: Verification</h4>
-                        <img src="https://i.imgur.com/N748v2L.png" alt="Case study of a late-stage model using parallel thinking for verification.">
-                        <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 6 from the paper: A late-stage model first derives a solution, then uses the parallel block to verify its conclusion.</p>
+                        <h5 class="title is-5 has-text-centered">Late Stage: Verification</h5>
+                        <img src="https://i.imgur.com/N748v2L.png" alt="Case study of a late-stage model.">
                     </div>
                 </div>
             </div>
@@ -390,19 +391,16 @@
 
     <div class="columns is-centered is-vcentered" style="margin-top: 4rem;">
         <div class="column is-half">
-            <h3 class="title is-4">Finding: Parallel Thinking as a Mid-Training Scaffold</h3>
+            <h4 class="title is-4">Finding: Mid-Training Scaffold</h4>
             <div class="content has-text-justified">
                 <p>
-                  We found that parallel thinking can serve as an effective structured exploration mechanism to improve RL training. By temporarily compelling the model to generate multiple, parallel thought blocks (Stage 1: Exploration), we introduce a strong inductive bias that forces a more diverse exploration, guiding the model toward more robust policy spaces.
-                </p>
-                <p>
-                  When we later switch the training objective to optimize for accuracy alone (Stage 2: Exploitation), the model's performance improves significantly, reaching a peak AIME25 accuracy of 25.6%, surpassing the baseline. This suggests the value of parallel thinking lies not just in the structure itself, but in the robust policy space it helps discover.
+                  We found that parallel thinking can serve as a structured exploration "scaffold". By temporarily forcing the model to explore with parallel paths, we guide it toward more robust policy spaces. When we later switch to optimizing for accuracy alone, the model's performance improves significantly, reaching a peak AIME25 accuracy of 25.6%, surpassing the baseline.
                 </p>
             </div>
         </div>
         <div class="column is-half">
             <img src="https://i.imgur.com/3YgD7Q1.png" alt="Graph showing two-stage training with parallel reasoning as a scaffold">
-            <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 4 from the paper: Two-stage training with parallel reasoning as a mid-training exploration scaffold.</p>
+            <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 4 from the paper.</p>
         </div>
     </div>
   </div>
