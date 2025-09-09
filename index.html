@@ -223,35 +223,35 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">The Core Challenge: The Data Bottleneck</h2>
+        <h2 class="title is-3">Challenges in Teaching Parallel Thinking</h2>
+        <div class="content has-text-justified">
+            <p>
+                While powerful, teaching LLMs to think in parallel via Reinforcement Learning is non-trivial and presents several core challenges that our work aims to address.
+            </p>
+        </div>
       </div>
     </div>
     
     <div class="columns is-centered">
         <div class="column is-four-fifths">
-            <div class="content has-text-justified">
-                <p>
-                    A significant challenge in teaching parallel thinking is collecting high-quality data, which is extremely rare in natural text distributions. Prior work relies on complex and costly data pipelines to synthesize such data.
-                </p>
-                <article class="message is-info">
-                  <div class="message-body">
-                    <strong>Key Finding</strong>: Our method is based on the discovery that it is easy to generate parallel thinking data for simple tasks, but extremely difficult for complex ones.
-                  </div>
-                </article>
-                <p>
-                    The table below illustrates this: a powerful model can generate valid parallel traces for 83.7% of simple GSM8K problems, but fails completely (0.0%) on challenging DAPO problems. Based on this, we created the <strong>Parallel-GSM8K</strong> dataset by using simple prompting on easy tasks. This dataset is strategically used only to teach the model the <em>format</em> of parallel thinking, which solves the data problem and enables our efficient reinforcement learning framework.
-                </p>
-            </div>
-            <table class="table is-bordered is-fullwidth is-striped" style="margin-top:1rem;">
-                <thead>
-                    <tr><th>Data</th><th># Samples</th><th>Parallel Thinking Format (%)</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>GSM8K</td><td>7,472</td><td>83.7</td></tr>
-                    <tr><td>DAPO</td><td>17,916</td><td>0.0</td></tr>
-                </tbody>
-            </table>
-            <p class="is-size-7 has-text-centered">Table 1 from the paper: Data quality comparison.</p>
+            <article class="message is-info">
+              <div class="message-header"><p>1. The RL Cold-Start & Data Bottleneck</p></div>
+              <div class="message-body">
+                LLMs pretrained on sequential text have a "cold-start" problem—they never generate parallel structures, so RL has nothing to reward. Furthermore, collecting high-quality parallel thinking data is a major challenge, as it's rare in natural text. Prior methods rely on complex data pipelines.
+              </div>
+            </article>
+            <article class="message is-info">
+              <div class="message-header"><p>2. The Reward Design Dilemma</p></div>
+              <div class="message-body">
+                The ideal reward function is unclear. If we only reward final accuracy, the model might learn to "cheat" and abandon complex parallel thinking. If we only reward the use of parallel structures, performance on the actual task might suffer. Finding the right balance is critical.
+              </div>
+            </article>
+            <article class="message is-info">
+              <div class="message-header"><p>3. The "Black Box" Strategy</p></div>
+              <div class="message-body">
+                Even if a model learns this skill, its strategic role and underlying mechanisms are a "black box". How does the model's strategy evolve during training? Without understanding this dynamic, it's impossible to fully unlock the potential of parallel thinking.
+              </div>
+            </article>
         </div>
     </div>
   </div>
@@ -267,33 +267,51 @@
         
         <div class="columns is-centered">
             <div class="column is-four-fifths">
-                <h3 class="title is-4 has-text-centered">Progressive Curriculum</h3>
+                <h3 class="title is-4 has-text-centered">1. Progressive Curriculum & Data Pipeline</h3>
                 <img src="./static/images/Progressive_curriculum.jpg" alt="Method Diagram" style="width: 100%; height: auto; display: block; margin: 0 auto; border-radius:10px;">
                 <div class="content has-text-justified" style="margin-top: 2rem;">
                   <p>
-                    To solve the "cold-start" problem, we propose a progressive, multi-stage training approach:
+                    To solve the cold-start problem, we propose a progressive curriculum. Our key finding is that it's easy to generate parallel data for simple tasks (like GSM8K) but hard for complex ones. We leverage this by creating the <strong>Parallel-GSM8K</strong> dataset to first teach the model the *format* of parallel thinking via SFT, before using RL to generalize the skill.
                   </p>
-                  <ul>
-                    <li><strong>Stage 1: Cold-Start SFT on Easy Math</strong>: We begin with SFT on our Parallel-GSM8K dataset to effectively teach the model the basic format of parallel thinking.</li>
-                    <li><strong>(Optional) Stage 2: Small-Scale RL</strong>: To stabilize format learning, we perform small-scale RL on the same easy question set.</li>
-                    <li><strong>Stage 3: Large-Scale RL on General Math</strong>: Finally, the model transitions to RL on more difficult tasks to generalize this ability.</li>
-                  </ul>
                 </div>
             </div>
         </div>
         
         <div class="columns is-centered is-vcentered" style="margin-top: 4rem;">
             <div class="column is-half">
-                <h3 class="title is-4">Model Variants: Causal vs. Structured</h3>
+                <h3 class="title is-4">2. Dedicated Reward Design</h3>
                 <div class="content has-text-justified">
                     <p>
-                        We explore two settings. The standard approach uses a normal <strong>Causal Model</strong> (Parallel-R1-Seen). We also introduce a <strong>Structured Variant</strong> (Parallel-R1-Unseen) which incorporates explicit inductive biases to enforce path isolation through path-window masking and multiverse position encodings.
+                        We tackle the reward dilemma with an <strong>alternating reward strategy</strong>. This approach switches between an accuracy-only reward and a tiered reward that gives a bonus to correct answers generated with parallel thinking (+1.2) over those without (+1.0). This achieves a strong balance between performance and structure.
+                    </p>
+                </div>
+            </div>
+            <div class="column is-half">
+                <table class="table is-bordered is-fullwidth results-table" style="margin: 0;">
+                    <thead>
+                        <tr><th>Reward Config</th><th>Parallel Ratio (%)</th><th>AIME 25</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Accuracy Only</td><td>13.6</td><td>17.7</td></tr>
+                        <tr><td>Parallel Only</td><td>80.3</td><td>17.7</td></tr>
+                        <tr style="background-color: #e9f5ff;"><td><strong>Alternating</strong></td><td class="highlight-best">63.0</td><td class="highlight-best">19.0</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="columns is-centered is-vcentered" style="margin-top: 4rem;">
+            <div class="column is-half">
+                <h3 class="title is-4">3. Architectural Exploration</h3>
+                <div class="content has-text-justified">
+                    <p>
+                        To open the "black box", we explore two settings: a standard <strong>Causal Model</strong> and a <strong>Structured Variant</strong> with explicit inductive biases (path-window masking and multiverse position encodings) to enforce path isolation and better understand the learning dynamics.
                     </p>
                 </div>
             </div>
             <div class="column is-half">
                 <img src="./static/images/model_architecture.jpg" alt="Illustration of the structured attention mask and position IDs.">
-                <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 2 from the paper: Structured attention mask.</p>
+                <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Structured attention mask.</p>
             </div>
         </div>
     </div>
@@ -342,32 +360,10 @@
             </div>
         </div>
     </div>
-    
-    <div class="columns is-centered" style="margin-top: 2rem;">
-        <div class="column is-four-fifths">
-            <h3 class="title is-4 has-text-centered">Ablation on Reward Modeling</h3>
-            <article class="message is-info">
-              <div class="message-body">
-                To find how to effectively stimulate parallel thinking, we tested several reward strategies. We found that an <strong>alternating reward</strong> provides the best balance between a high parallel ratio (63.0%) and strong performance, achieving the best results on challenging benchmarks like AIME25.
-              </div>
-            </article>
-            <table class="table is-bordered is-fullwidth results-table">
-                <thead>
-                    <tr><th>Training Configuration</th><th>Parallel Ratio (%)</th><th>AIME 25</th><th>AIME 24</th><th>AMC 23</th><th>MATH</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Accuracy Only</td><td>13.6</td><td>17.7</td><td>18.3</td><td>69.7</td><td>82.6</td></tr>
-                    <tr><td>Parallel Only</td><td>80.3</td><td>17.7</td><td>15.2</td><td>59.4</td><td>81.7</td></tr>
-                    <tr style="background-color: #e9f5ff;"><td><strong>Alternating Acc./Parallel</strong></td><td class="highlight-best">63.0</td><td class="highlight-best">19.0</td><td>16.3</td><td>67.5</td><td class="highlight-best">84.5</td></tr>
-                </tbody>
-                <caption class="is-size-7" style="caption-side: bottom; text-align: center; margin-top: 0.5rem;">Table 4 from the paper: Ablation study on reward modeling for the Parallel-R1-Unseen model.</caption>
-            </table>
-        </div>
-    </div>
 
     <div class="columns is-centered">
         <div class="column is-four-fifths">
-            <h3 class="title is-4 has-text-centered" style="margin-top: 2rem;">Evolution of Parallel Thinking Behavior</h3>
+            <h3 class="title is-4 has-text-centered" style="margin-top: 2rem;">Finding: Evolution of Behavior</h3>
         </div>
     </div>
     <div class="columns is-centered is-vcentered">
@@ -404,7 +400,7 @@
 
     <div class="columns is-centered">
         <div class="column is-four-fifths">
-            <h3 class="title is-4 has-text-centered" style="margin-top: 2rem;">Parallel Thinking as a Mid-Training Scaffold</h3>
+            <h3 class="title is-4 has-text-centered" style="margin-top: 2rem;">Finding: Parallel Thinking as a Mid-Training Scaffold</h3>
         </div>
     </div>
     <div class="columns is-centered is-vcentered">
