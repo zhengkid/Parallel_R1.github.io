@@ -228,7 +228,7 @@
     </div>
     
     <div class="columns is-centered">
-        <div class="column">
+        <div class="column is-four-fifths">
             <h3 class="title is-4 has-text-centered">Progressive Curriculum</h3>
             <img src="https://i.imgur.com/eBf2K5t.png" alt="Method Diagram" style="width: 100%; height: auto; display: block; margin: 0 auto; border-radius:10px;">
             <div class="content has-text-justified" style="margin-top: 2rem;">
@@ -244,23 +244,23 @@
         </div>
     </div>
     
-    <div class="columns is-centered is-vcentered" style="margin-top: 4rem;">
-        <div class="column is-half">
-            <h3 class="title is-4">Data Pipeline: Overcoming the Bottleneck</h3>
+    <div class="columns is-centered" style="margin-top: 2rem;">
+        <div class="column is-four-fifths">
+            <h3 class="title is-4 has-text-centered">Data Pipeline: Overcoming the Bottleneck</h3>
             <div class="content has-text-justified">
                 <p>
-                    [cite_start]A significant challenge is collecting high-quality parallel thinking data, which is extremely rare in natural text distributions[cite: 145, 146]. [cite_start]Prior work relies on complex and costly data pipelines[cite: 148].
+                    A significant challenge is collecting high-quality parallel thinking data, which is extremely rare in natural text distributions. Prior work relies on complex and costly data pipelines.
                 </p>
+                <article class="message is-info">
+                  <div class="message-body">
+                    <strong>Key Finding</strong>: Our method is based on the discovery that it is easy to generate parallel thinking data for simple tasks, but extremely difficult for complex ones.
+                  </div>
+                </article>
                 <p>
-                    [cite_start]Our method is based on a key finding: **it is easy to generate parallel thinking data for simple tasks, but extremely difficult for complex ones**[cite: 144, 150]. [cite_start]As shown in the table, a powerful model can generate valid parallel traces for 83.7% of simple GSM8K problems, but fails completely (0.0%) on challenging DAPO problems[cite: 144, 158].
-                </p>
-                <p>
-                    [cite_start]Based on this, we created the **Parallel-GSM8K** dataset, a high-quality corpus generated via simple prompting on easy tasks[cite: 73, 191]. [cite_start]This dataset is strategically used only to teach the model the *format* of parallel thinking, enabling the subsequent, more efficient RL stages[cite: 153].
+                    The table below shows this clearly: a powerful model can generate valid parallel traces for 83.7% of simple GSM8K problems, but fails completely (0.0%) on challenging DAPO problems. Based on this, we created the <strong>Parallel-GSM8K</strong> dataset by using simple prompting on easy tasks. This dataset is strategically used only to teach the model the <em>format</em> of parallel thinking, enabling the subsequent, more efficient RL stages.
                 </p>
             </div>
-        </div>
-        <div class="column is-half">
-            <table class="table is-bordered is-fullwidth is-striped">
+            <table class="table is-bordered is-fullwidth is-striped" style="margin-top:1rem;">
                 <thead>
                     <tr><th>Data</th><th># Samples</th><th>Parallel Thinking Format (%)</th></tr>
                 </thead>
@@ -269,7 +269,7 @@
                     <tr><td>DAPO</td><td>17,916</td><td>0.0</td></tr>
                 </tbody>
             </table>
-            <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Table 1 from the paper: Data quality comparison.</p>
+            <p class="is-size-7 has-text-centered">Table 1 from the paper: Data quality comparison.</p>
         </div>
     </div>
 
@@ -281,7 +281,7 @@
                     We explore two settings for learning parallel thinking. The standard approach uses a normal <strong>Causal Model</strong> (termed Parallel-R1-Seen) without architectural changes.
                 </p>
                 <p>
-                    [cite_start]We also introduce a <strong>Structured Variant</strong> (termed Parallel-R1-Unseen) which incorporates explicit inductive biases to enforce path isolation through path-window masking and multiverse position encodings[cite: 212, 213, 214].
+                    We also introduce a <strong>Structured Variant</strong> (termed Parallel-R1-Unseen) which incorporates explicit inductive biases to enforce path isolation through path-window masking and multiverse position encodings.
                 </p>
             </div>
         </div>
@@ -305,7 +305,7 @@
         <div class="column" style="overflow-x: auto;">
             <h3 class="title is-4 has-text-centered">Main Results</h3>
             <p class="has-text-centered">
-              Performance comparison for the Qwen-3-4B-Base model. [cite_start]Our progressive Parallel-R1 framework consistently outperforms all baselines[cite: 268]. [cite_start]The top-performing causal variant, <strong>Parallel-R1-Seen</strong>, achieves the highest average score of 48.9[cite: 268].
+              Performance comparison for the Qwen-3-4B-Base model. Our progressive Parallel-R1 framework consistently outperforms all baselines. The top-performing causal variant, <strong>Parallel-R1-Seen</strong>, achieves the highest average score of 48.9.
             </p>
             <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth results-table">
                 <thead>
@@ -328,7 +328,7 @@
                     <tr><td>Parallel-R1-Unseen (S1)</td><td>13.6</td><td>17.7</td><td>37.8</td><td>18.3</td><td>33.2</td><td>69.7</td><td>88.9</td><td>82.6</td><td>47.1</td></tr>
                     <tr><td>Parallel-R1-Unseen (S2)</td><td class="highlight-best">63.0</td><td>19.0</td><td class="highlight-best">42.2</td><td>16.3</td><td>31.8</td><td>67.5</td><td class="highlight-best">91.5</td><td>84.5</td><td>46.8</td></tr>
                 </tbody>
-                [cite_start]<caption class="is-size-7" style="caption-side: bottom; text-align: center; margin-top: 0.5rem;">Table 2 from the paper: Performance comparison on mathematical reasoning benchmarks[cite: 265].</caption>
+                <caption class="is-size-7" style="caption-side: bottom; text-align: center; margin-top: 0.5rem;">Table 2 from the paper: Performance comparison on mathematical reasoning benchmarks.</caption>
             </table>
         </div>
     </div>
@@ -337,7 +337,7 @@
         <div class="column">
             <h3 class="title is-4 has-text-centered">Ablation on Reward Modeling</h3>
              <p class="has-text-centered">
-              To find how to effectively stimulate parallel thinking, we tested several reward strategies on our structured model. [cite_start]We found that an alternating approach provides the best balance between a high parallel ratio and strong performance[cite: 298, 309].
+              To find how to effectively stimulate parallel thinking, we tested several reward strategies on our structured model. We found that an alternating approach provides the best balance between a high parallel ratio and strong performance.
             </p>
             <table class="table is-bordered is-fullwidth results-table">
                 <thead>
@@ -348,7 +348,7 @@
                     <tr><td>Parallel Only</td><td>80.3</td><td>17.7</td><td>15.2</td><td>59.4</td><td>81.7</td></tr>
                     <tr style="background-color: #e9f5ff;"><td><strong>Alternating Acc./Parallel</strong></td><td class="highlight-best">63.0</td><td class="highlight-best">19.0</td><td>16.3</td><td>67.5</td><td class="highlight-best">84.5</td></tr>
                 </tbody>
-                [cite_start]<caption class="is-size-7" style="caption-side: bottom; text-align: center; margin-top: 0.5rem;">Table 4 from the paper: Ablation study on reward modeling for the Parallel-R1-Unseen model[cite: 282].</caption>
+                <caption class="is-size-7" style="caption-side: bottom; text-align: center; margin-top: 0.5rem;">Table 4 from the paper: Ablation study on reward modeling for the Parallel-R1-Unseen model.</caption>
             </table>
         </div>
     </div>
@@ -358,14 +358,14 @@
             <h3 class="title is-4">Finding: Evolution of Behavior</h3>
             <div class="content has-text-justified">
                 <p>
-                  [cite_start]Our analysis reveals a clear strategic evolution: the model initially leverages parallel paths for computational exploration, but as it gains proficiency, its strategy shifts towards using them for multi-perspective verification to confirm the final answer[cite: 318, 328, 335]. [cite_start]This is shown by the relative position of the <code>&lt;Parallel&gt;</code> block moving later in the generation process as training progresses[cite: 321].
+                  Our analysis reveals a clear strategic evolution: the model initially leverages parallel paths for computational exploration, but as it gains proficiency, its strategy shifts towards using them for multi-perspective verification to confirm the final answer. This is shown by the relative position of the <code>&lt;Parallel&gt;</code> block moving later in the generation process as training progresses.
                 </p>
                  <button class="button is-info is-outlined is-small" id="toggle-cases-btn" style="margin-top: 1rem;">Show Supporting Case Studies</button>
             </div>
         </div>
         <div class="column is-half">
             <img src="https://i.imgur.com/iC5uS9u.png" alt="Graph showing the relative position of the parallel block during RL training">
-            [cite_start]<p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 3 from the paper: Positional dynamics of the <code>&lt;Parallel&gt;</code> block[cite: 331].</p>
+            <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 3 from the paper: Positional dynamics of the <code>&lt;Parallel&gt;</code> block.</p>
         </div>
     </div>
 
@@ -376,12 +376,12 @@
                     <div class="case-study">
                         <h4 class="title is-5 has-text-centered">Early Stage: Exploration</h4>
                         <img src="https://i.imgur.com/u15j6mC.png" alt="Case study of an early-stage model using parallel thinking for exploration.">
-                        [cite_start]<p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 5 from the paper: An early-stage model explores two distinct algebraic methods to find possible answers[cite: 563].</p>
+                        <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 5 from the paper: An early-stage model explores two distinct algebraic methods to find possible answers.</p>
                     </div>
                     <div class="case-study">
                         <h4 class="title is-5 has-text-centered">Late Stage: Verification</h4>
                         <img src="https://i.imgur.com/N748v2L.png" alt="Case study of a late-stage model using parallel thinking for verification.">
-                        [cite_start]<p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 6 from the paper: A late-stage model first derives a solution, then uses the parallel block to verify its conclusion[cite: 591].</p>
+                        <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 6 from the paper: A late-stage model first derives a solution, then uses the parallel block to verify its conclusion.</p>
                     </div>
                 </div>
             </div>
@@ -393,16 +393,16 @@
             <h3 class="title is-4">Finding: Parallel Thinking as a Mid-Training Scaffold</h3>
             <div class="content has-text-justified">
                 <p>
-                  [cite_start]We found that parallel thinking can serve as an effective structured exploration mechanism to improve RL training[cite: 343]. [cite_start]By temporarily compelling the model to generate multiple, parallel thought blocks (Stage 1: Exploration), we introduce a strong inductive bias that forces a more diverse exploration, guiding the model toward more robust policy spaces[cite: 376, 380].
+                  We found that parallel thinking can serve as an effective structured exploration mechanism to improve RL training. By temporarily compelling the model to generate multiple, parallel thought blocks (Stage 1: Exploration), we introduce a strong inductive bias that forces a more diverse exploration, guiding the model toward more robust policy spaces.
                 </p>
                 <p>
-                  [cite_start]When we later switch the training objective to optimize for accuracy alone (Stage 2: Exploitation), the model's performance improves significantly, reaching a peak AIME25 accuracy of 25.6%, surpassing the baseline[cite: 382, 384]. [cite_start]This suggests the value of parallel thinking lies not just in the structure itself, but in the robust policy space it helps discover[cite: 386].
+                  When we later switch the training objective to optimize for accuracy alone (Stage 2: Exploitation), the model's performance improves significantly, reaching a peak AIME25 accuracy of 25.6%, surpassing the baseline. This suggests the value of parallel thinking lies not just in the structure itself, but in the robust policy space it helps discover.
                 </p>
             </div>
         </div>
         <div class="column is-half">
             <img src="https://i.imgur.com/3YgD7Q1.png" alt="Graph showing two-stage training with parallel reasoning as a scaffold">
-            [cite_start]<p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 4 from the paper: Two-stage training with parallel reasoning as a mid-training exploration scaffold[cite: 369].</p>
+            <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 4 from the paper: Two-stage training with parallel reasoning as a mid-training exploration scaffold.</p>
         </div>
     </div>
   </div>
