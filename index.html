@@ -74,7 +74,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          [cite_start]<h1 class="title is-1 publication-title">Parallel-R1: Towards Parallel Thinking via Reinforcement Learning [cite: 3]</h1>
+           <h1 class="title is-1 publication-title">Parallel-R1: Towards Parallel Thinking via Reinforcement Learning</h1>
           <h3 class="subtitle is-4 publication-venue">Technical Report</h3>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
@@ -116,7 +116,7 @@
             <span class="author-block"><sup>3</sup>Carnegie Mellon University,</span>
             <span class="author-block"><sup>4</sup>University of North Carolina at Chapel Hill,</span><br>
             <span class="author-block"><sup>5</sup>City University of Hong Kong,</span>
-            [cite_start]<span class="author-block"><sup>6</sup>Washington University in St. Louis</span> [cite: 5]
+             <span class="author-block"><sup>6</sup>Washington University in St. Louis</span> 
           </div>
 
           <div class="column has-text-centered">
@@ -161,7 +161,7 @@
     <div class="hero-body">
         <img src="https://i.imgur.com/vHq4gYd.png" alt="An overview of the Parallel-R1 framework" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
       <h2 class="subtitle has-text-centered" style="margin-top: 2rem;">
-        [cite_start]<span style="font-weight:bold; color:#3273DC;">Parallel-R1</span> teaches Large Language Models to learn parallel thinking through reinforcement learning [cite: 9][cite_start], turning a single line of thought into a multi-path reasoning strategy. [cite: 7]
+         <span style="font-weight:bold; color:#3273DC;">Parallel-R1</span> teaches Large Language Models to learn parallel thinking through reinforcement learning, turning a single line of thought into a multi-path reasoning strategy. 
       </h2>
     </div>
   </div>
@@ -175,10 +175,10 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            [cite_start]Parallel thinking has emerged as a novel approach for enhancing the reasoning capabilities of large language models (LLMs) by exploring multiple reasoning paths concurrently[cite: 7]. [cite_start]However, activating such capabilities through training remains challenging, as existing methods predominantly rely on supervised fine-tuning (SFT) over synthetic data, which encourages teacher-forced imitation rather than exploration and generalization[cite: 8].
+             Parallel thinking has emerged as a novel approach for enhancing the reasoning capabilities of large language models (LLMs) by exploring multiple reasoning paths concurrently.  However, activating such capabilities through training remains challenging, as existing methods predominantly rely on supervised fine-tuning (SFT) over synthetic data, which encourages teacher-forced imitation rather than exploration and generalization.
           </p>
           <p>
-            [cite_start]Different from them, we propose Parallel-R1, the first reinforcement learning (RL) framework that enables parallel thinking behaviors for complex real-world reasoning tasks[cite: 9]. [cite_start]Our framework employs a progressive curriculum that explicitly addresses the cold-start problem in training parallel thinking with RL[cite: 10]. [cite_start]We first use SFT on prompt-generated trajectories from easier tasks to instill the parallel thinking ability, then transition to RL to explore and generalize this skill on harder problems[cite: 11]. [cite_start]Experiments on various math benchmarks show that Parallel-R1 successfully instills parallel thinking, leading to significant accuracy improvements over sequential thinking models[cite: 12].
+             Different from them, we propose Parallel-R1, the first reinforcement learning (RL) framework that enables parallel thinking behaviors for complex real-world reasoning tasks.  Our framework employs a progressive curriculum that explicitly addresses the cold-start problem in training parallel thinking with RL.  We first use SFT on prompt-generated trajectories from easier tasks to instill the parallel thinking ability, then transition to RL to explore and generalize this skill on harder problems.  Experiments on various math benchmarks show that Parallel-R1 successfully instills parallel thinking, leading to significant accuracy improvements over sequential thinking models.
           </p>
         </div>
       </div>
@@ -195,17 +195,17 @@
         <img src="https://i.imgur.com/eBf2K5t.png" alt="Method Diagram" style="width: 100%; height: auto; display: block; margin: 0 auto; border-radius:10px;">
         <div class="content has-text-justified" style="margin-top: 2rem;">
           <p>
-            [cite_start]LLMs cannot learn parallel thinking with RL from scratch because they have not seen such behavior during pre-training and thus cannot generate such trajectories for the model to learn from[cite: 58]. [cite_start]To solve this "cold-start" problem, we propose a progressive, multi-stage training approach[cite: 52].
+             LLMs cannot learn parallel thinking with RL from scratch because they have not seen such behavior during pre-training and thus cannot generate such trajectories for the model to learn from.  To solve this "cold-start" problem, we propose a progressive, multi-stage training approach.
           </p>
           <ul>
             <li>
-                [cite_start]<strong>Stage 1: Cold-Start SFT on Easy Math</strong>: We begin with supervised fine-tuning on simpler problems[cite: 72]. [cite_start]We found that high-quality parallel thinking data for easy tasks (like GSM8K) can be generated easily via simple prompting[cite: 72]. [cite_start]This initial stage uses our created Parallel-GSM8K dataset to effectively teach the model the basic format of parallel thinking[cite: 73, 191].
+                 <strong>Stage 1: Cold-Start SFT on Easy Math</strong>: We begin with supervised fine-tuning on simpler problems.  We found that high-quality parallel thinking data for easy tasks (like GSM8K) can be generated easily via simple prompting.  This initial stage uses our created Parallel-GSM8K dataset to effectively teach the model the basic format of parallel thinking.
             </li>
             <li>
-                [cite_start]<strong>(Optional) Stage 2: Small-Scale RL</strong>: To enhance and stabilize the format learning, we can perform small-scale reinforcement learning on the same easy question set, using a reward that encourages both accuracy and the use of parallel structures[cite: 196, 198].
+                 <strong>(Optional) Stage 2: Small-Scale RL</strong>: To enhance and stabilize the format learning, we can perform small-scale reinforcement learning on the same easy question set, using a reward that encourages both accuracy and the use of parallel structures.
             </li>
             <li>
-                [cite_start]<strong>Stage 3: Large-Scale RL on General Math</strong>: Finally, the model transitions to reinforcement learning on more difficult tasks (like the DAPO dataset) to explore and generalize this new ability[cite: 73, 202]. [cite_start]At this stage, the primary goal is to improve task performance, so we use an accuracy-only reward[cite: 203, 204].
+                 <strong>Stage 3: Large-Scale RL on General Math</strong>: Finally, the model transitions to reinforcement learning on more difficult tasks (like the DAPO dataset) to explore and generalize this new ability.  At this stage, the primary goal is to improve task performance, so we use an accuracy-only reward.
             </li>
           </ul>
         </div>
@@ -226,7 +226,7 @@
         <div class="column">
             <h3 class="title is-4 has-text-centered">Main Results</h3>
             <p class="has-text-centered">
-              [cite_start]Performance comparison on mathematical reasoning benchmarks for the Qwen-3-4B-Base model[cite: 263]. [cite_start]Our progressive Parallel-R1 framework consistently outperforms all baselines[cite: 268]. [cite_start]The top-performing causal variant, <strong>Parallel-R1-Seen</strong>, achieves the highest average score of 48.9[cite: 268].
+               Performance comparison on mathematical reasoning benchmarks for the Qwen-3-4B-Base model.  Our progressive Parallel-R1 framework consistently outperforms all baselines.  The top-performing causal variant, <strong>Parallel-R1-Seen</strong>, achieves the highest average score of 48.9.
             </p>
             <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth results-table">
                 <thead>
@@ -254,42 +254,42 @@
                     </tr>
                     <tr>
                         <td>GRPO (DAPO)</td>
-                        [cite_start]<td>0.0 [cite: 265]</td>
-                        [cite_start]<td>14.8 [cite: 265]</td>
-                        [cite_start]<td>32.4 [cite: 265]</td>
-                        [cite_start]<td>18.5 [cite: 265]</td>
-                        [cite_start]<td>30.6 [cite: 265]</td>
-                        [cite_start]<td>63.6 [cite: 265]</td>
-                        [cite_start]<td>85.1 [cite: 265]</td>
-                        [cite_start]<td>83.5 [cite: 265]</td>
-                        [cite_start]<td>45.1 [cite: 265]</td>
+                         <td>0.0  </td>
+                         <td>14.8  </td>
+                         <td>32.4  </td>
+                         <td>18.5  </td>
+                         <td>30.6  </td>
+                         <td>63.6  </td>
+                         <td>85.1  </td>
+                         <td>83.5  </td>
+                         <td>45.1  </td>
                     </tr>
                     <tr>
                         <td>+ RL on GSM8K</td>
-                        [cite_start]<td>0.0 [cite: 265]</td>
-                        [cite_start]<td>13.3 [cite: 265]</td>
-                        [cite_start]<td>26.3 [cite: 265]</td>
-                        [cite_start]<td>18.8 [cite: 265]</td>
-                        [cite_start]<td>34.9 [cite: 265]</td>
-                        [cite_start]<td>66.4 [cite: 265]</td>
-                        [cite_start]<td>82.2 [cite: 265]</td>
-                        [cite_start]<td>82.6 [cite: 265]</td>
-                        [cite_start]<td>45.3 [cite: 265]</td>
+                         <td>0.0  </td>
+                         <td>13.3  </td>
+                         <td>26.3  </td>
+                         <td>18.8  </td>
+                         <td>34.9  </td>
+                         <td>66.4  </td>
+                         <td>82.2  </td>
+                         <td>82.6  </td>
+                         <td>45.3  </td>
                     </tr>
                     <tr>
                         <td colspan="10" style="background-color: #f2f2f2; font-style: italic;"><strong>Our Method</strong></td>
                     </tr>
                     <tr style="background-color: #e9f5ff;">
                         <td><strong>Parallel-R1-Seen</strong></td>
-                        [cite_start]<td>27.3 [cite: 265]</td>
-                        [cite_start]<td class="highlight-best">19.2 [cite: 265]</td>
-                        [cite_start]<td>38.9 [cite: 265]</td>
-                        [cite_start]<td class="highlight-best">19.4 [cite: 265]</td>
-                        [cite_start]<td>37.1 [cite: 265]</td>
-                        [cite_start]<td class="highlight-best">70.5 [cite: 265]</td>
-                        [cite_start]<td>85.0 [cite: 265]</td>
-                        [cite_start]<td class="highlight-best">86.7 [cite: 265]</td>
-                        [cite_start]<td class="highlight-best">48.9 [cite: 265]</td>
+                         <td>27.3  </td>
+                         <td class="highlight-best">19.2  </td>
+                         <td>38.9  </td>
+                         <td class="highlight-best">19.4  </td>
+                         <td>37.1  </td>
+                         <td class="highlight-best">70.5  </td>
+                         <td>85.0  </td>
+                         <td class="highlight-best">86.7  </td>
+                         <td class="highlight-best">48.9  </td>
                     </tr>
                 </tbody>
             </table>
@@ -301,7 +301,7 @@
             <h3 class="title is-4">Finding 1: Evolution of Behavior</h3>
             <div class="content has-text-justified">
                 <p>
-                  [cite_start]Our analysis reveals a clear strategic evolution: the model initially leverages parallel paths for computational exploration to discover potential solutions[cite: 78]. [cite_start]As it gains proficiency, its strategy shifts towards using them for multi-perspective verification to confirm the final answer[cite: 78]. [cite_start]This is evidenced by the relative position of the <code>&lt;Parallel&gt;</code> block moving later in the generation process as training progresses[cite: 321].
+                   Our analysis reveals a clear strategic evolution: the model initially leverages parallel paths for computational exploration to discover potential solutions.  As it gains proficiency, its strategy shifts towards using them for multi-perspective verification to confirm the final answer .  This is evidenced by the relative position of the <code>&lt;Parallel&gt;</code> block moving later in the generation process as training progresses.
                 </p>
             </div>
         </div>
@@ -315,7 +315,7 @@
              <h3 class="title is-4">Finding 2: Parallel Thinking as an Exploration Scaffold</h3>
             <div class="content has-text-justified">
                 <p>
-                  [cite_start]We hypothesize that parallel thinking can serve as an effective structured exploration mechanism to improve RL training[cite: 374]. [cite_start]By forcing the model to generate multiple thought blocks, we introduce a strong inductive bias that guides it toward more robust policy spaces[cite: 376]. [cite_start]Our experiments validate this: after an initial exploration phase with forced parallelism, switching to an accuracy-only reward allows performance to continue improving, reaching a peak AIME25 accuracy of 25.6%, a notable improvement over the baseline GRPO model[cite: 384].
+                   We hypothesize that parallel thinking can serve as an effective structured exploration mechanism to improve RL training.  By forcing the model to generate multiple thought blocks, we introduce a strong inductive bias that guides it toward more robust policy spaces.  Our experiments validate this: after an initial exploration phase with forced parallelism, switching to an accuracy-only reward allows performance to continue improving, reaching a peak AIME25 accuracy of 25.6%, a notable improvement over the baseline GRPO model.
                 </p>
             </div>
         </div>
