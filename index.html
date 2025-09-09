@@ -258,7 +258,7 @@
             <article class="message is-info">
               <div class="message-header"><p>1. The RL Cold-Start & Data Bottleneck</p></div>
               <div class="message-body">
-                The effort to instill parallel thinking is trapped in a dilemma between two flawed approaches. The dominant method, Supervised Fine-Tuning (SFT), is fundamentally limited to behavioral cloning. It relies on "complex and costly data pipelines" only to teach "superficial pattern matching" rather than a generalizable, intrinsic skill. The more promising path, Reinforcement Learning (RL), is stalled by a fatal "cold-start" problem. Since models have no prior exposure to parallel structures, they cannot generate valid exploratory trajectories, leaving the RL algorithm with nothing to learn from and unable to even begin the training process.
+               Since the current LLMs have not seen parallel thinking behavior during the pre-training and sft, they cannot generate such trajectories during explorations for the model to learn from. Thus, the cold-start training becomes crucial. The goal of this stage is to teach the model basic formats without harming it too much, which requires a small-scale, high-quality dataset. However, the fact is that high-quality parallel thinking data for complex, real-world problems is extremely rare in natural text and difficult to synthesize.
               </div>
             </article>
             <article class="message is-info">
