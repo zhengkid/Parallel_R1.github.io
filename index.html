@@ -36,7 +36,7 @@
     .section {
       padding: 3rem 1.5rem;
     }
-    .content h1, .content h2, .content h3, .content h4 {
+    .content h1, .content h2, .content h3, .content h4, .content h5 {
         font-family: 'Google Sans', sans-serif;
         font-weight: 500;
     }
@@ -78,6 +78,7 @@
         border-radius: 5px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
+    /* Styles for the collapsible section */
     .collapsible-content {
         max-height: 0;
         overflow: hidden;
@@ -85,7 +86,7 @@
         margin-top: 0 !important;
     }
     .collapsible-content.is-active {
-        max-height: 1000px;
+        max-height: 1000px; /* Large enough to fit content */
         margin-top: 2rem !important;
     }
     @media screen and (max-width: 768px) {
@@ -382,15 +383,17 @@
 
     <div id="case-studies-collapsible" class="collapsible-content">
         <div class="columns is-centered">
-            <div class="column is-four-fifths">
+            <div class="column">
                 <div class="case-study-container">
                     <div class="case-study">
                         <h5 class="title is-5 has-text-centered">Early Stage: Exploration</h5>
                         <img src="https://i.imgur.com/u15j6mC.png" alt="Case study of an early-stage model.">
+                        <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 5 from the paper: An early-stage model explores two distinct algebraic methods to find possible answers.</p>
                     </div>
                     <div class="case-study">
                         <h5 class="title is-5 has-text-centered">Late Stage: Verification</h5>
                         <img src="https://i.imgur.com/N748v2L.png" alt="Case study of a late-stage model.">
+                        <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 6 from the paper: A late-stage model first derives a solution, then uses the parallel block to verify its conclusion.</p>
                     </div>
                 </div>
             </div>
