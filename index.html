@@ -309,7 +309,7 @@
 
     <div class="columns is-centered">
         <div class="column is-four-fifths">
-            <h3 class="title is-4 has-text-centered">Main Results</h3>
+            <h3 class="title is-4 has-text-centered" style="margin-top: 2rem;">Main Results</h3>
             <article class="message is-info">
               <div class="message-body">
                 Our progressive Parallel-R1 framework consistently outperforms all baselines. The top-performing causal variant, <strong>Parallel-R1-Seen</strong>, achieves an average score of 48.9 across four challenging math benchmarks, a significant improvement over the baseline GRPO model's 45.1.
@@ -365,10 +365,14 @@
         </div>
     </div>
 
-    <div class="columns is-centered is-vcentered" style="margin-top: 4rem;">
+    <div class="columns is-centered">
+        <div class="column is-four-fifths">
+            <h3 class="title is-4 has-text-centered" style="margin-top: 2rem;">Finding: Evolution of Behavior</h3>
+        </div>
+    </div>
+    <div class="columns is-centered is-vcentered">
         <div class="column is-half">
             <article class="message is-info">
-              <div class="message-header"><p>Finding: Evolution of Behavior</p></div>
               <div class="message-body">
                 Our analysis reveals a clear strategic evolution: the model initially leverages parallel paths for <strong>exploration</strong>, but as it gains proficiency, its strategy shifts towards using them for <strong>verification</strong>. This is shown by the relative position of the parallel thinking block moving later in the generation process as training progresses.
               </div>
@@ -388,22 +392,24 @@
                     <div class="case-study">
                         <h5 class="title is-5 has-text-centered">Early Stage: Exploration</h5>
                         <img src="https://i.imgur.com/u15j6mC.png" alt="Case study of an early-stage model.">
-                        <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 5 from the paper: An early-stage model explores two distinct algebraic methods to find possible answers.</p>
                     </div>
                     <div class="case-study">
                         <h5 class="title is-5 has-text-centered">Late Stage: Verification</h5>
                         <img src="https://i.imgur.com/N748v2L.png" alt="Case study of a late-stage model.">
-                        <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 6 from the paper: A late-stage model first derives a solution, then uses the parallel block to verify its conclusion.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="columns is-centered is-vcentered" style="margin-top: 4rem;">
+    <div class="columns is-centered">
+        <div class="column is-four-fifths">
+            <h3 class="title is-4 has-text-centered" style="margin-top: 2rem;">Finding: Parallel Thinking as a Mid-Training Scaffold</h3>
+        </div>
+    </div>
+    <div class="columns is-centered is-vcentered">
         <div class="column is-half">
             <article class="message is-info">
-                <div class="message-header"><p>Finding: Parallel Thinking as a Mid-Training Scaffold</p></div>
                 <div class="message-body">
                     We found that parallel thinking can serve as a structured exploration "scaffold". By temporarily forcing the model to explore with parallel paths, we guide it toward more robust policy spaces. When we later switch to optimizing for accuracy alone, the model's performance improves significantly, reaching a peak AIME25 accuracy of 25.6%, surpassing the baseline.
                 </div>
