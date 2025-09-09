@@ -285,6 +285,102 @@
                 <h2 class="title is-3">Our Contributions</h2>
             </div>
         </div>
+
+        <div class="columns is-centered">
+            <div class="column is-four-fifths">
+                <h3 class="title is-4 has-text-centered">1. The Parallel-R1 Framework</h3>
+                <div class="content has-text-justified">
+                    <p>
+                        To solve the cold-start and reward design challenges, we propose a complete framework featuring a progressive curriculum and dedicated reward design.
+                    </p>
+                    <img src="./static/images/Progressive_curriculum.jpg" alt="The illustration of our training recipe." style="width:100%; height:auto; margin-bottom: 1rem;">
+                    <ul>
+                        <li><strong>Progressive Curriculum</strong>: We leverage a key finding that it's easy to generate parallel data for simple tasks (like GSM8K). We create the <strong>Parallel-GSM8K</strong> dataset to first teach the model the *format* of parallel thinking via SFT, before using RL to generalize the skill on harder problems.</li>
+                        <li><strong>Dedicated Reward Design</strong>: We explore multiple reward schems to effectively stimulate parallel thinking behaviors and propose an <strong>alternating reward strategy</strong> that switches between an accuracy-only reward and a tiered reward that gives a bonus to correct answers generated with parallel thinking.</li>
+                        <li><strong>Model Architecture Support</strong>: We explore two versions of our Parallel-R1, the Seen and Unseen versions, which utilize novel architectural components like <strong>path-window attention</strong> and <strong>multiverse position ID</strong>.</li>
+                    </ul>
+                    <p style="text-align: center;">
+                        <img src="./static/images/model_architecture.jpg" alt="Diagram illustrating Path-Window attention and Multiverse position ID" style="width:70%; max-width:600px; height:auto; margin-top: 20px;">
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="columns is-centered">
+            <div class="column is-four-fifths">
+                <h3 class="title is-4 has-text-centered">2. Ablation on Rewards: Stimulating Parallel Thinking</h3>
+                <div class="content has-text-justified">
+                    <p>
+                        To find the best reward design for stimulating parallel thinking, we conducted an ablation study on three different reward schemes:
+                    </p>
+                    <ul>
+                        <li><strong>Accuracy-Only Reward</strong>: This baseline scheme provides a reward of 1 for a correct final answer and 0 for an incorrect one.</li>
+                        <li><strong>Parallel Reward</strong>: This scheme introduces a bonus for correct answers that also demonstrate parallel thinking, encouraging the model to not only get the right answer but to do so in the desired format.</li>
+                        <li><strong>Alternating Accuracy/Parallel Reward (Our Method)</strong>: Our proposed approach alternates between the two schemes. It first uses the simple accuracy reward to anchor the model on task performance, then switches to the parallel reward to teach the specific thinking style.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="columns is-centered">
+            <div class="column is-four-fifths">
+                <h3 class="title is-4 has-text-centered">3. Uncovering Learning Dynamics</h3>
+                <div class="columns is-vcentered">
+                    <div class="column is-half">
+                        <div class="content has-text-justified">
+                            <p>
+                                To open the "black box", we provide the first empirical evidence of how an LLM's reasoning strategy with parallel thinking evolves. Our analysis reveals a clear strategic shift: the model initially leverages parallel paths for <strong>exploration</strong>, but as it gains proficiency, it shifts towards using them for <strong>verification</strong>.
+                            </p>
+                        </div>
+                        <button class="button is-info is-outlined is-small" id="toggle-cases-btn">Show Supporting Case Studies</button>
+                    </div>
+                    <div class="column is-half">
+                        <img src="./static/images/parallel_position.jpg" alt="Graph showing the relative position of the parallel block during RL training">
+                    </div>
+                </div>
+                <div id="case-studies-collapsible" class="collapsible-content" style="margin-top: 1rem;">
+                    <div class="case-study-container">
+                        <div class="case-study">
+                            <h5 class="title is-5 has-text-centered">Early Stage: Exploration</h5>
+                            <img src="./static/images/case1.jpg" alt="Case study of an early-stage model.">
+                        </div>
+                        <div class="case-study">
+                            <h5 class="title is-5 has-text-centered">Late Stage: Verification</h5>
+                            <img src="./static/images/case2.jpg" alt="Case study of a late-stage model.">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="columns is-centered">
+            <div class="column is-four-fifths">
+                <h3 class="title is-4 has-text-centered">4. Parallel Thinking as a Mid-Training Scaffold</h3>
+                <div class="columns is-vcentered">
+                    <div class="column is-half">
+                        <div class="content has-text-justified">
+                            <p>
+                                We conceptualize and validate that parallel thinking can serve as a structured exploration "scaffold". By temporarily forcing the model to explore with parallel paths, we guide it toward more robust policy spaces. This temporary phase unlocks a higher performance ceiling after RL, yielding a <strong>42.9% improvement</strong> over the baseline and reaching a peak accuracy of <strong>25.6% on AIME25</strong>.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="column is-half">
+                        <img src="./static/images/mid_training.jpg" alt="Graph showing two-stage training with parallel reasoning as a scaffold">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+  
+<!-- <section class="section">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Our Contributions</h2>
+            </div>
+        </div>
         
         <div class="columns is-centered">
             <div class="column is-four-fifths">
@@ -423,7 +519,7 @@
     </div>
   </div>
 </section>
-
+ -->
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
