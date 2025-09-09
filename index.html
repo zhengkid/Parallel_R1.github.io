@@ -306,6 +306,21 @@
             </div>
         </div>
 
+      <div class="columns is-centered">
+            <div class="column is-four-fifths">
+                <h3 class="title is-4 has-text-centered">2. Ablation on Rewards: Stimulating Parallel Thinking</h3>
+                <div class="content has-text-justified">
+                  <p>
+                    To answer the research question, "What is the best reward design for effectively stimulating parallel thinking?" we conducted an ablation study on three different reward schemes.
+                  </p>
+                  <ul>
+                    <li><strong>Accuracy-Only Reward</strong>: This baseline scheme provides a reward of 1 for a correct final answer and 0 for an incorrect one. It doesn't incentivize the model's internal reasoning process.</li>
+                    <li><strong>Parallel Reward</strong>: This scheme introduces a bonus for correct answers that also demonstrate parallel thinking, encouraging the model to not only get the right answer but to do so in the desired format.</li>
+                    <li><strong>Alternating Accuracy/Parallel Reward (Our Method)</strong>: Our proposed approach alternates between the two reward schemes. This progressive curriculum first uses the simple accuracy-only reward to anchor the model on task performance, then switches to the tiered reward to teach the specific parallel thinking style.</li>
+                  </ul>
+                </div>
+            </div>
+        </div>
         <div class="columns is-centered">
             <div class="column is-four-fifths">
                 <h3 class="title is-4 has-text-centered">2. Ablation on Rewards: Stimulating Parallel Thinking</h3>
