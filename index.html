@@ -297,7 +297,11 @@
                   <ul>
                     <li><strong>Progressive Curriculum</strong>: We leverage a key finding that it's easy to generate parallel data for simple tasks (like GSM8K). We create the <strong>Parallel-GSM8K</strong> dataset to first teach the model the *format* of parallel thinking via SFT, before using RL to generalize the skill on harder problems.</li>
                     <li><strong>Dedicated Reward Design</strong>: We explore multiple reward schems to effectively stimulate parallel thinking behaviors and propose an <strong>alternating reward strategy</strong> that switches between an accuracy-only reward and a tiered reward that gives a bonus to correct answers generated with parallel thinking.</li>
+                    <li><strong>Model Architecture Support</strong>: We explore two versions of our Parallel-R1, the Seen and Unseen versions, which utilize novel architectural components like <strong>path-window attention</strong> and <strong>multiverse position ID</strong>.</li></li>
                   </ul>
+                  <p style="text-align: center;">
+                  <img src="./static/images/model_architecture.jpg" alt="Diagram illustrating Path-Window attention and Multiverse position ID" style="width:70%; max-width:600px; height:auto; margin-top: 20px;">
+                </p>
                 </div>
             </div>
         </div>
