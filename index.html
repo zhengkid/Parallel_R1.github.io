@@ -199,7 +199,7 @@
     <div class="hero-body">
         <img src="./static/images/Parallel_Thinking_illustration.jpg" alt="An overview of the Parallel-R1 framework" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
       <h2 class="subtitle has-text-centered" style="margin-top: 2rem;">
-        <span class="dnerf">Parallel-R1</span> teaches Large Language Models to learn parallel thinking through reinforcement learning, turning a single line of thought into a multi-path reasoning strategy.
+        <span class="dnerf">Parallel-R1</span> teaches Large Language Models to learn parallel thinking through reinforcement learning, turning a single line of thought into a multi-thread reasoning strategy.
       </h2>
     </div>
   </div>
@@ -293,6 +293,7 @@
                   <p>
                     To solve the cold-start and reward design challenges, we propose a complete framework featuring a progressive curriculum and dedicated reward design.
                   </p>
+                  <img src="./static/images/Progressive_curriculum.jpg" alt="The illustration of our training recipe." style="width:100%; height:auto;">
                   <ul>
                     <li><strong>Progressive Curriculum</strong>: We leverage a key finding that it's easy to generate parallel data for simple tasks (like GSM8K). We create the <strong>Parallel-GSM8K</strong> dataset to first teach the model the *format* of parallel thinking via SFT, before using RL to generalize the skill on harder problems.</li>
                     <li><strong>Dedicated Reward Design</strong>: We propose an <strong>alternating reward strategy</strong> that switches between an accuracy-only reward and a tiered reward that gives a bonus to correct answers generated with parallel thinking.</li>
