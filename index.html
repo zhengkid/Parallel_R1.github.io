@@ -4,94 +4,80 @@
   <meta charset="utf-8">
   <meta name="description"
         content="Parallel-R1: Towards Parallel Thinking via Reinforcement Learning">
-  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="keywords" content="Parallel Thinking, Reinforcement Learning, LLM, Reasoning">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Parallel-R1: Towards Parallel Thinking via Reinforcement Learning</title>
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
 
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <!-- <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"> -->
-  <link rel="stylesheet" href="./static/css/index.css">
-  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+  <style>
+    .hero.teaser .container {
+      max-width: 100%;
+    }
+    .publication-title {
+      font-family: 'Google Sans', sans-serif;
+      font-weight: 500;
+    }
+    .publication-authors {
+      font-family: 'Google Sans', sans-serif;
+    }
+    .publication-venue {
+        color: #555;
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    .link-block a {
+      color: #3273dc;
+    }
+    .section {
+      padding: 3rem 1.5rem;
+    }
+    .content h1, .content h2, .content h3 {
+        font-family: 'Google Sans', sans-serif;
+        font-weight: 500;
+    }
+    .publication-links .button {
+        font-weight: 500;
+    }
+    .results-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2rem 0;
+    }
+    .results-table th, .results-table td {
+        border: 1px solid #dbdbdb;
+        padding: 0.75em;
+        vertical-align: middle;
+    }
+    .results-table thead {
+        background-color: #f5f5f5;
+        font-weight: bold;
+    }
+    .highlight-best {
+        font-weight: bold;
+        color: #257942;
+    }
+  </style>
+  
   <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
+
 </head>
 <body>
-
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <!-- <a class="navbar-item" href="https://keunhong.com">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a> -->
-
-      <!-- <div class="navbar-item has-dropdown is-hoverable"> -->
-        <!-- <a class="navbar-link">
-          More Research
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://hypernerf.github.io">
-            HyperNeRF
-          </a>
-          <a class="navbar-item" href="https://nerfies.github.io">
-            Nerfies
-          </a>
-          <a class="navbar-item" href="https://latentfusion.github.io">
-            LatentFusion
-          </a>
-          <a class="navbar-item" href="https://photoshape.github.io">
-            PhotoShape
-          </a>
-        </div> -->
-      </div>
-    </div>
-
-  </div>
-</nav>
-
 
 <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Parallel-R1: Towards Parallel Thinking via Reinforcement Learning</h1>
+          [cite_start]<h1 class="title is-1 publication-title">Parallel-R1: Towards Parallel Thinking via Reinforcement Learning [cite: 3]</h1>
+          <h3 class="subtitle is-4 publication-venue">Technical Report</h3>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://kidzheng.github.io/">Tong Zheng</a><sup>1,2</sup>,</span>
+              <a href="https://kidzheng.github.io/">Tong Zheng</a><sup>1,2,†</sup>,</span>
             <span class="author-block">
               <a href="https://panda0881.github.io/Hongming_Homepage/">Hongming Zhang</a><sup>1</sup>,</span>
             <span class="author-block">
@@ -105,18 +91,18 @@
             </span>
             <span class="author-block">
               <a href="https://www.linkedin.com/in/runpeng-dai-453aa7195/">Runpeng Dai</a><sup>1,4</sup>,
+            </span><br>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=pMeiokwAAAAJ&hl=en">Rui Liu</a><sup>2</sup>,
             </span>
             <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=pMeiokwAAAAJ&hl=en">Rui Liu</a><sup>1,2</sup>
+              <a href="https://scholar.google.com/citations?hl=en&user=3PnRUyQAAAAJ">Huiwen Bao</a><sup>5</sup>,
             </span>
             <span class="author-block">
-              <a href="https://scholar.google.com/citations?hl=en&user=3PnRUyQAAAAJ">Huiwen Bao</a><sup>5</sup>
+              <a href="https://chengsong-huang.github.io/">Chengsong Huang</a><sup>6</sup>,
             </span>
             <span class="author-block">
-              <a href="https://chengsong-huang.github.io/">Chengsong Huang</a><sup>1,6</sup>
-            </span>
-            <span class="author-block">
-              <a href="https://www.cs.umd.edu/~heng/">Heng Huang</a><sup>2</sup>
+              <a href="https://www.cs.umd.edu/~heng/">Heng Huang</a><sup>2</sup>,
             </span>
             <span class="author-block">
               <a href="https://sites.google.com/view/dongyu888/">Dong Yu</a><sup>1</sup>
@@ -124,19 +110,18 @@
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Tencent AI  Seattle Lab,</span>
+            <span class="author-block"><sup>1</sup>Tencent AI Lab Seattle,</span>
             <span class="author-block"><sup>2</sup>University of Maryland, College Park,</span>
             <span class="author-block"><sup>3</sup>Carnegie Mellon University,</span>
-            <span class="author-block"><sup>4</sup>University of North Carolina at Chapel Hill,</span>
-            <span class="author-block"><sup>5</sup>City University of Hong Kong,</span><br>
-            <span class="author-block"><sup>6</sup>Washington University in St. Louis</span>
+            <span class="author-block"><sup>4</sup>University of North Carolina at Chapel Hill,</span><br>
+            <span class="author-block"><sup>5</sup>City University of Hong Kong,</span>
+            [cite_start]<span class="author-block"><sup>6</sup>Washington University in St. Louis</span> [cite: 5]
           </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
-              <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2508.05004"
+                <a href="https://arxiv.org/pdf/your-paper-id.pdf"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -145,7 +130,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2508.05004"
+                <a href="https://arxiv.org/abs/your-paper-id"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -153,17 +138,6 @@
                   <span>arXiv</span>
                 </a>
               </span>
-              <!-- Video Link. -->
-              <!-- <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span> -->
-              <!-- Code Link. -->
               <span class="link-block">
                 <a href="https://github.com/zhengkid/Parallel-R1"
                    class="external-link button is-normal is-rounded is-dark">
@@ -173,36 +147,21 @@
                   <span>Code</span>
                   </a>
               </span>
-              <!-- Dataset Link. -->
-              <!-- <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a> -->
             </div>
-
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- INSERT_YOUR_CODE -->
-<img src="./static/images/abstract.png" alt="Abstract" style="width: 80%; height: auto; display: block; margin: 0 auto;">
 
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
-      <h1 class="subtitle has-text-centered" style="font-size: x-large;">
-        <span class="dnerf" style="font-size: x-large;">Parallel-R1</span> teaches Large Language Models to learn parallel thinking, not just imitate it. Turning a single line of thought into a multi-path reasoning strategy.
-      </h1>
+        <img src="https://i.imgur.com/vHq4gYd.png" alt="An overview of the Parallel-R1 framework" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+      <h2 class="subtitle has-text-centered" style="margin-top: 2rem;">
+        [cite_start]<span style="font-weight:bold; color:#3273DC;">Parallel-R1</span> teaches Large Language Models to learn parallel thinking through reinforcement learning [cite: 9][cite_start], turning a single line of thought into a multi-path reasoning strategy. [cite: 7]
+      </h2>
     </div>
   </div>
 </section>
@@ -210,67 +169,44 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Training powerful reasoning models traditionally requires massive, human-curated datasets, which are expensive and hard to scale. R-Zero is a novel framework that enables LLMs to improve their reasoning abilities autonomously, without needing any pre-existing tasks or labels. It's a truly self-evolving system that learns from scratch.
+            [cite_start]Parallel thinking has emerged as a novel approach for enhancing the reasoning capabilities of large language models (LLMs) by exploring multiple reasoning paths concurrently[cite: 7]. [cite_start]However, activating such capabilities through training remains challenging, as existing methods predominantly rely on supervised fine-tuning (SFT) over synthetic data, which encourages teacher-forced imitation rather than exploration and generalization[cite: 8].
           </p>
           <p>
-            At its core, R-Zero sets up a dynamic co-evolutionary loop between two instances of the same base model:
+            [cite_start]Different from them, we propose Parallel-R1, the first reinforcement learning (RL) framework that enables parallel thinking behaviors for complex real-world reasoning tasks[cite: 9]. [cite_start]Our framework employs a progressive curriculum that explicitly addresses the cold-start problem in training parallel thinking with RL[cite: 10]. [cite_start]We first use SFT on prompt-generated trajectories from easier tasks to instill the parallel thinking ability, then transition to RL to explore and generalize this skill on harder problems[cite: 11]. [cite_start]Experiments on various math benchmarks show that Parallel-R1 successfully instills parallel thinking, leading to significant accuracy improvements over sequential thinking models[cite: 12].
+          </p>
+        </div>
+      </div>
+    </div>
+    </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method: A Progressive Curriculum</h2>
+        <img src="https://i.imgur.com/eBf2K5t.png" alt="Method Diagram" style="width: 100%; height: auto; display: block; margin: 0 auto; border-radius:10px;">
+        <div class="content has-text-justified" style="margin-top: 2rem;">
+          <p>
+            [cite_start]LLMs cannot learn parallel thinking with RL from scratch because they have not seen such behavior during pre-training and thus cannot generate such trajectories for the model to learn from[cite: 58]. [cite_start]To solve this "cold-start" problem, we propose a progressive, multi-stage training approach[cite: 52].
           </p>
           <ul>
-            <li><strong>The Challenger 🎯:</strong> Its job is to probe the Solver for weaknesses and generate challenging problems that are right at the edge of its capabilities.</li>
-            <li><strong>The Solver 🧠:</strong> Its goal is to continuously improve by solving the increasingly difficult tasks posed by the Challenger.</li>
+            <li>
+                [cite_start]<strong>Stage 1: Cold-Start SFT on Easy Math</strong>: We begin with supervised fine-tuning on simpler problems[cite: 72]. [cite_start]We found that high-quality parallel thinking data for easy tasks (like GSM8K) can be generated easily via simple prompting[cite: 72]. [cite_start]This initial stage uses our created Parallel-GSM8K dataset to effectively teach the model the basic format of parallel thinking[cite: 73, 191].
+            </li>
+            <li>
+                [cite_start]<strong>(Optional) Stage 2: Small-Scale RL</strong>: To enhance and stabilize the format learning, we can perform small-scale reinforcement learning on the same easy question set, using a reward that encourages both accuracy and the use of parallel structures[cite: 196, 198].
+            </li>
+            <li>
+                [cite_start]<strong>Stage 3: Large-Scale RL on General Math</strong>: Finally, the model transitions to reinforcement learning on more difficult tasks (like the DAPO dataset) to explore and generalize this new ability[cite: 73, 202]. [cite_start]At this stage, the primary goal is to improve task performance, so we use an accuracy-only reward[cite: 203, 204].
+            </li>
           </ul>
-          <p>
-            This process creates a perfectly tailored, adaptive curriculum. The Challenger learns to ask better questions, and the Solver learns to find better answers. The entire cycle is self-contained, using techniques like majority voting for pseudo-labels and relative policy optimization to guide the learning.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!--/ Abstract. -->
-
-    <!-- Paper video.
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-    <!--/ Paper video. -->
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Method</h2>
-        <img src="./static/images/method.png" alt="Method" style="width: 100%; height: auto; display: block; margin: 0 auto;">
-        <div class="content has-text-justified">
-          <p>
-            At its core, the method orchestrates a co-evolution between a "Challenger" and a "Solver" model.
-        </p>
-        <ul>
-            <li>
-                <strong>The Challenger</strong>: This model is rewarded for generating problems that are precisely at the edge of the Solver's current abilities.
-            </li>
-            <li>
-                <strong>The Solver</strong>: This model attempts to solve the increasingly difficult tasks posed by the Challenger.
-            </li>
-            <li>
-                <strong>Data Generation</strong>: For the problems created by the Challenger, reliable pseudo-labels are created by taking a majority vote on the Solver's own attempts. This process constructs a new training dataset that is used to fine-tune the Solver.
-            </li>
-        </ul>
-        Please refer to the paper for more details.
         </div>
       </div>
     </div>
@@ -278,175 +214,134 @@
 </section>
 
 <section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Results</h2>
-        <table style="width:100%; border-collapse: collapse; text-align: center;">
-          <caption style="caption-side: bottom; padding-top: 8px; font-size: 0.9em; text-align: left;">
-              Results on general-domain reasoning benchmarks. The table compares the Base Model, a <strong>Base Challenger</strong> baseline, and our iterative method (R-Zero). The peak performance achieved during each model's training process is highlighted in <strong>bold</strong>.
-          </caption>
-          <thead>
-              <tr style="background-color: #f2f2f2;">
-                  <th style="padding: 8px; border-bottom: 2px solid #ddd;">Model Name</th>
-                  <th style="padding: 8px; border-bottom: 2px solid #ddd;">Overall AVG</th>
-                  <th style="padding: 8px; border-bottom: 2px solid #ddd;">MATH AVG</th>
-                  <th style="padding: 8px; border-bottom: 2px solid #ddd;">SuperGPQA</th>
-                  <th style="padding: 8px; border-bottom: 2px solid #ddd;">MMLU-Pro</th>
-                  <th style="padding: 8px; border-bottom: 2px solid #ddd;">BBEH</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td colspan="6" style="text-align: left; padding: 8px; font-style: italic; background-color: #e9e9e9; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;">
-                      Qwen3-4B-Base
-                  </td>
-              </tr>
-              <tr>
-                  <td style="text-align: left; padding: 8px 8px 8px 24px;">Base Model</td>
-                  <td>27.10</td>
-                  <td>42.58</td>
-                  <td>20.88</td>
-                  <td>37.38</td>
-                  <td>7.57</td>
-              </tr>
-              <tr>
-                  <td style="text-align: left; padding: 8px 8px 8px 24px;">Base Challenger</td>
-                  <td>30.83</td>
-                  <td>44.36</td>
-                  <td>24.77</td>
-                  <td>47.59</td>
-                  <td>6.59</td>
-              </tr>
-              <tr>
-                  <td style="text-align: left; padding: 8px 8px 8px 24px;">R-Zero (Iter 1)</td>
-                  <td>34.27</td>
-                  <td>48.06</td>
-                  <td><strong>27.92</strong></td>
-                  <td>51.69</td>
-                  <td>9.42</td>
-              </tr>
-              <tr>
-                  <td style="text-align: left; padding: 8px 8px 8px 24px;">R-Zero (Iter 2)</td>
-                  <td><strong>34.92</strong></td>
-                  <td>48.44</td>
-                  <td>27.72</td>
-                  <td><strong>53.75</strong></td>
-                  <td>9.76</td>
-              </tr>
-              <tr>
-                  <td style="text-align: left; padding: 8px 8px 8px 24px;">R-Zero (Iter 3)</td>
-                  <td>34.64</td>
-                  <td><strong>49.07</strong></td>
-                  <td>27.55</td>
-                  <td>51.53</td>
-                  <td><strong>10.42</strong></td>
-              </tr>
-              <tr>
-                  <td colspan="6" style="text-align: left; padding: 8px; font-style: italic; background-color: #e9e9e9; border-top: 2px solid #aaa; border-bottom: 1px solid #ccc;">
-                      Qwen3-8B-Base
-                  </td>
-              </tr>
-              <tr>
-                  <td style="text-align: left; padding: 8px 8px 8px 24px;">Base Model</td>
-                  <td>34.49</td>
-                  <td>49.18</td>
-                  <td>28.33</td>
-                  <td>51.80</td>
-                  <td>8.63</td>
-              </tr>
-              <tr>
-                  <td style="text-align: left; padding: 8px 8px 8px 24px;">Base Challenger</td>
-                  <td>36.43</td>
-                  <td>51.87</td>
-                  <td>30.12</td>
-                  <td>54.14</td>
-                  <td>9.60</td>
-              </tr>
-              <tr>
-                  <td style="text-align: left; padding: 8px 8px 8px 24px;">R-Zero (Iter 1)</td>
-                  <td>37.93</td>
-                  <td>53.39</td>
-                  <td>31.26</td>
-                  <td>57.17</td>
-                  <td>9.91</td>
-              </tr>
-              <tr>
-                  <td style="text-align: left; padding: 8px 8px 8px 24px;">R-Zero (Iter 2)</td>
-                  <td>38.45</td>
-                  <td>53.84</td>
-                  <td><strong>31.58</strong></td>
-                  <td>58.20</td>
-                  <td>10.20</td>
-              </tr>
-              <tr>
-                  <td style="text-align: left; padding: 8px 8px 8px 24px;">R-Zero (Iter 3)</td>
-                  <td><strong>38.73</strong></td>
-                  <td><strong>54.69</strong></td>
-                  <td>31.38</td>
-                  <td><strong>58.23</strong></td>
-                  <td><strong>10.60</strong></td>
-              </tr>
-          </tbody>
-      </table>
-        <div class="content has-text-justified">
-          <h3>1. Substantial Improvements in Mathematical Reasoning</h3>
-        <ul>
-            <li>
-                <strong>Consistent & Significant Gains:</strong> The iterative training process consistently and substantially improves upon the performance of base models. For instance, on the <span class="model-name">Qwen3-8B-Base</span> model, three iterations of R-Zero raised the average performance from a baseline of 49.18 to 54.69, a significant gain of <strong class="highlight">+5.51</strong> points.
-            </li>
-            <li>
-                <strong>Progressive Improvement:</strong> Performance gains are progressive, with a clear trend of improvement across iterations. This consistent growth underscores the benefits of the co-evolutionary dynamic, where the Solver learns from an increasingly challenging curriculum.
-            </li>
-            <li>
-                <strong>Critical Role of RL-Trained Challenger:</strong> The necessity of the RL-based Challenger is validated by the immediate performance leap from the baseline (Base Challenger) to the first iteration of R-Zero. This confirms that the intelligent curriculum generated by the RL-trained Challenger is significantly more effective.
-            </li>
-        </ul>
-
-        <h3>2. Successful Generalization to General Reasoning</h3>
-        <ul>
-            <li>
-                <strong>Effective Skill Transfer:</strong> Reasoning abilities developed through math-focused training successfully transfer to general-domain tasks. This generalization effect was observed across all tested models.
-            </li>
-            <li>
-                <strong>Quantifiable Generalization:</strong> After three iterations, the average general-domain score of <span class="model-name">Qwen3-8B-Base</span> improved by <strong class="highlight">+3.81</strong> points, and <span class="model-name">OctoThinker-3B</span> improved by <strong class="highlight">+3.65</strong> points.
-            </li>
-            <li>
-                <strong>Enhancement of Core Capabilities:</strong> These results confirm that the R-Zero method does not merely teach domain-specific knowledge but enhances the model's underlying capabilities in a way that successfully generalizes across different domains.
-            </li>
-        </ul>
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Key Findings & Results</h2>
         </div>
       </div>
+
+    <div class="columns is-centered">
+        <div class="column">
+            <h3 class="title is-4 has-text-centered">Main Results</h3>
+            <p class="has-text-centered">
+              [cite_start]Performance comparison on mathematical reasoning benchmarks for the Qwen-3-4B-Base model[cite: 263]. [cite_start]Our progressive Parallel-R1 framework consistently outperforms all baselines[cite: 268]. [cite_start]The top-performing causal variant, <strong>Parallel-R1-Seen</strong>, achieves the highest average score of 48.9[cite: 268].
+            </p>
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth results-table">
+                <thead>
+                    <tr>
+                        <th rowspan="2">Method</th>
+                        <th rowspan="2">Parallel Ratio (%)</th>
+                        <th colspan="2">AIME25</th>
+                        <th colspan="2">AIME24</th>
+                        <th colspan="2">AMC23</th>
+                        <th rowspan="2">MATH (Mean@1)</th>
+                        <th rowspan="2">Avg.</th>
+                    </tr>
+                    <tr>
+                        <th>Mean@16</th>
+                        <th>Pass@16</th>
+                        <th>Mean@16</th>
+                        <th>Pass@16</th>
+                        <th>Mean@16</th>
+                        <th>Pass@16</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="10" style="background-color: #f2f2f2; font-style: italic;"><strong>Baselines</strong></td>
+                    </tr>
+                    <tr>
+                        <td>GRPO (DAPO)</td>
+                        [cite_start]<td>0.0 [cite: 265]</td>
+                        [cite_start]<td>14.8 [cite: 265]</td>
+                        [cite_start]<td>32.4 [cite: 265]</td>
+                        [cite_start]<td>18.5 [cite: 265]</td>
+                        [cite_start]<td>30.6 [cite: 265]</td>
+                        [cite_start]<td>63.6 [cite: 265]</td>
+                        [cite_start]<td>85.1 [cite: 265]</td>
+                        [cite_start]<td>83.5 [cite: 265]</td>
+                        [cite_start]<td>45.1 [cite: 265]</td>
+                    </tr>
+                    <tr>
+                        <td>+ RL on GSM8K</td>
+                        [cite_start]<td>0.0 [cite: 265]</td>
+                        [cite_start]<td>13.3 [cite: 265]</td>
+                        [cite_start]<td>26.3 [cite: 265]</td>
+                        [cite_start]<td>18.8 [cite: 265]</td>
+                        [cite_start]<td>34.9 [cite: 265]</td>
+                        [cite_start]<td>66.4 [cite: 265]</td>
+                        [cite_start]<td>82.2 [cite: 265]</td>
+                        [cite_start]<td>82.6 [cite: 265]</td>
+                        [cite_start]<td>45.3 [cite: 265]</td>
+                    </tr>
+                    <tr>
+                        <td colspan="10" style="background-color: #f2f2f2; font-style: italic;"><strong>Our Method</strong></td>
+                    </tr>
+                    <tr style="background-color: #e9f5ff;">
+                        <td><strong>Parallel-R1-Seen</strong></td>
+                        [cite_start]<td>27.3 [cite: 265]</td>
+                        [cite_start]<td class="highlight-best">19.2 [cite: 265]</td>
+                        [cite_start]<td>38.9 [cite: 265]</td>
+                        [cite_start]<td class="highlight-best">19.4 [cite: 265]</td>
+                        [cite_start]<td>37.1 [cite: 265]</td>
+                        [cite_start]<td class="highlight-best">70.5 [cite: 265]</td>
+                        [cite_start]<td>85.0 [cite: 265]</td>
+                        [cite_start]<td class="highlight-best">86.7 [cite: 265]</td>
+                        [cite_start]<td class="highlight-best">48.9 [cite: 265]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="columns is-centered is-vcentered" style="margin-top: 4rem;">
+        <div class="column is-half">
+            <h3 class="title is-4">Finding 1: Evolution of Behavior</h3>
+            <div class="content has-text-justified">
+                <p>
+                  [cite_start]Our analysis reveals a clear strategic evolution: the model initially leverages parallel paths for computational exploration to discover potential solutions[cite: 78]. [cite_start]As it gains proficiency, its strategy shifts towards using them for multi-perspective verification to confirm the final answer[cite: 78]. [cite_start]This is evidenced by the relative position of the <code>&lt;Parallel&gt;</code> block moving later in the generation process as training progresses[cite: 321].
+                </p>
+            </div>
+        </div>
+        <div class="column is-half">
+            <img src="https://i.imgur.com/iC5uS9u.png" alt="Graph showing the relative position of the parallel block during RL training">
+        </div>
+    </div>
+
+    <div class="columns is-centered is-vcentered" style="margin-top: 4rem;">
+        <div class="column is-half">
+             <h3 class="title is-4">Finding 2: Parallel Thinking as an Exploration Scaffold</h3>
+            <div class="content has-text-justified">
+                <p>
+                  [cite_start]We hypothesize that parallel thinking can serve as an effective structured exploration mechanism to improve RL training[cite: 374]. [cite_start]By forcing the model to generate multiple thought blocks, we introduce a strong inductive bias that guides it toward more robust policy spaces[cite: 376]. [cite_start]Our experiments validate this: after an initial exploration phase with forced parallelism, switching to an accuracy-only reward allows performance to continue improving, reaching a peak AIME25 accuracy of 25.6%, a notable improvement over the baseline GRPO model[cite: 384].
+                </p>
+            </div>
+        </div>
+        <div class="column is-half">
+            <img src="https://i.imgur.com/3YgD7Q1.png" alt="Graph showing two-stage training with parallel reasoning as a scaffold">
+        </div>
     </div>
   </div>
 </section>
-
-
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>
-      @misc{huang2025rzeroselfevolvingreasoningllm,
-        title={R-Zero: Self-Evolving Reasoning LLM from Zero Data}, 
-        author={Chengsong Huang and Wenhao Yu and Xiaoyang Wang and Hongming Zhang and Zongxia Li and Ruosen Li and Jiaxin Huang and Haitao Mi and Dong Yu},
-        year={2025},
-        eprint={2508.05004},
-        archivePrefix={arXiv},
-        primaryClass={cs.LG},
-        url={https://arxiv.org/abs/2508.05004}, 
-  }
-    </code></pre>
+    <pre><code>@misc{zheng2025parallelr1,
+      title={Parallel-R1: Towards Parallel Thinking via Reinforcement Learning}, 
+      author={Tong Zheng and Hongming Zhang and Wenhao Yu and Xiaoyang Wang and Xinyu Yang and Runpeng Dai and Rui Liu and Huiwen Bao and Chengsong Huang and Heng Huang and Dong Yu},
+      year={2025},
+      eprint={your-arxiv-id},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}</code></pre>
   </div>
 </section>
-  
 
 
 <footer class="footer">
   <div class="container">
-    <div class="content has-text-centered">
-    </div>
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
@@ -456,8 +351,8 @@
             Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
           <p>
-            Thank the source codes from <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website.
+            This webpage template was borrowed from the <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> project page.
           </p>
         </div>
       </div>
@@ -467,4 +362,3 @@
 
 </body>
 </html>
-
