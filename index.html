@@ -314,74 +314,14 @@
                     To find the best reward design for stimulating parallel thinking, we conducted an ablation study on three different reward schemes:
                   </p>
                   <ul>
-                    <li><strong>Accuracy-Only Reward</strong>: Our baseline, this scheme rewards a correct final answer (1) and penalizes an incorrect one (0). It does not incentivize the model's reasoning process.</li>
-                    <li><strong>Parallel Reward</strong>: This scheme offers a bonus for correct answers that also demonstrate parallel thinking, encouraging the desired format.</li>
+                    <li><strong>Accuracy-Only Reward</strong>: This baseline scheme provides a reward of 1 for a correct final answer and 0 for an incorrect one.</li>
+                    <li><strong>Parallel Reward</strong>: This scheme introduces a bonus for correct answers that also demonstrate parallel thinking, encouraging the model to not only get the right answer but to do so in the desired format</li>
                     <li><strong>Alternating Accuracy/Parallel Reward (Our Method)</strong>: Our proposed approach alternates between the two schemes. It first uses the simple accuracy reward to anchor the model on task performance, then switches to the parallel reward to teach the specific thinking style.</li>
                   </ul>
                 </div>
             </div>
         </div>
-        <div class="columns is-centered">
-            <div class="column is-four-fifths">
-                <h3 class="title is-4 has-text-centered">2. Ablation on Rewards: Stimulating Parallel Thinking</h3>
-                <div class="content has-text-justified">
-                  <p>
-                    To answer the research question, "What is the best reward design for effectively stimulating parallel thinking?" we conducted an ablation study on three different reward schemes.
-                  </p>
-                  <ul>
-                    <li><strong>Accuracy-Only Reward</strong>: This baseline scheme provides a reward of 1 for a correct final answer and 0 for an incorrect one. It doesn't incentivize the model's internal reasoning process.</li>
-                    <li><strong>Parallel Reward</strong>: This scheme introduces a bonus for correct answers that also demonstrate parallel thinking, encouraging the model to not only get the right answer but to do so in the desired format.</li>
-                    <li><strong>Alternating Accuracy/Parallel Reward (Our Method)</strong>: Our proposed approach alternates between the two reward schemes. This progressive curriculum first uses the simple accuracy-only reward to anchor the model on task performance, then switches to the tiered reward to teach the specific parallel thinking style.</li>
-                  </ul>
-                  <h4>Table 1: Ablation Study on Reward Modeling for the Parallel-R1-Unseen Model.</h4>
-                  <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-                    <thead>
-                      <tr>
-                        <th>Training Configuration</th>
-                        <th>Parallel Ratio</th>
-                        <th>AIME 25</th>
-                        <th>AIME 24</th>
-                        <th>AMC 23</th>
-                        <th>MATH</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Accuracy</td>
-                        <td>13.6</td>
-                        <td>17.7</td>
-                        <td><strong>18.3</strong></td>
-                        <td><strong>69.7</strong></td>
-                        <td>82.6</td>
-                      </tr>
-                      <tr>
-                        <td>Parallel</td>
-                        <td><strong>80.3</strong></td>
-                        <td>17.7</td>
-                        <td>15.2</td>
-                        <td>59.4</td>
-                      </tr>
-                      <tr>
-                        <td>Alternating Acc./Parallel</td>
-                        <td>63.0</td>
-                        <td><strong>19.0</strong></td>
-                        <td>16.3</td>
-                        <td>67.5</td>
-                        <td><strong>84.5</strong></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <br>
-                  <p>
-                    The findings from our ablation study provide clear insights into the role of reward design. The <strong>Accuracy-only</strong> model performs well on standard metrics like AMC 23 and AIME 24, but its <strong>Parallel Ratio is extremely low (13.6%)</strong>, showing it fails to learn the desired reasoning format. Conversely, the <strong>Parallel-only</strong> model achieves the highest <strong>Parallel Ratio (80.3%)</strong> but performs poorly on most benchmark tasks, indicating it learns the format at the expense of accuracy.
-                  </p>
-                  <p>
-                    Our <strong>Alternating Accuracy/Parallel</strong> approach strikes the optimal balance. It achieves a robust Parallel Ratio of 63.0% while also securing the highest scores on AIME 25 (19.0) and MATH (84.5). This demonstrates that our proposed alternating reward strategy effectively guides the model to learn the correct reasoning format without sacrificing performance on complex unseen problems.
-                  </p>
-                </div>
-            </div>
-        </div>
-
+        
 
         <div class="columns is-centered">
             <div class="column is-four-fifths">
