@@ -228,9 +228,9 @@
                 <h3 class="title is-4 has-text-centered">Highlights</h3>
                 <div class="content">
                     <ul>
-                        <li>Achieves an **8.4%** accuracy improvement over sequential thinking models trained with RL.</li>
-                        <li>Demonstrates that parallel thinking can be used as a mid-training exploration scaffold, yielding a **42.9%** improvement over the baseline[cite: 14].</li>
-                        <li>Reaches a peak accuracy of **25.6%** on the challenging AIME25 benchmark[cite: 80].</li>
+                        <li>Presents Parallel-R1, the first RL framework to instill parallel thinking, achieving an 8.4% accuracy improvement over sequential thinking models trained with RL.</li>
+                        <li>Discovers a clear strategic evolution in how the model uses parallel thinking, shifting from early-stage computational exploration to late-stage multi-perspective verification as training progresses.</li>
+                        <li>Establishes the value of parallel thinking as a mid-training exploration scaffold, a temporary phase which unlocks a higher performance ceiling and yields a 42.9% improvement over the baseline.</li>
                     </ul>
                 </div>
             </div>
@@ -258,19 +258,19 @@
             <article class="message is-info">
               <div class="message-header"><p>1. The RL Cold-Start & Data Bottleneck</p></div>
               <div class="message-body">
-                LLMs pretrained on sequential text have a "cold-start" problem—they never generate parallel structures, so RL has nothing to reward[cite: 58]. Furthermore, collecting high-quality parallel thinking data is a major challenge, as it's rare in natural text.
+                LLMs pretrained on sequential text have a "cold-start" problem—they never generate parallel structures, so RL has nothing to reward. Furthermore, collecting high-quality parallel thinking data is a major challenge, as it's rare in natural text.
               </div>
             </article>
             <article class="message is-info">
               <div class="message-header"><p>2. The Reward Design Dilemma</p></div>
               <div class="message-body">
-                The ideal reward function is unclear[cite: 61]. If we only reward final accuracy, the model might learn to "cheat" and abandon complex parallel thinking. If we only reward the use of parallel structures, performance on the actual task might suffer[cite: 61, 62].
+                The ideal reward function is unclear. If we only reward final accuracy, the model might learn to "cheat" and abandon complex parallel thinking. If we only reward the use of parallel structures, performance on the actual task might suffer.
               </div>
             </article>
             <article class="message is-info">
               <div class="message-header"><p>3. The "Black Box" Strategy</p></div>
               <div class="message-body">
-                Even if a model learns this skill, its strategic role and underlying mechanisms are a "black box"[cite: 63]. How does the model's strategy evolve during training? Without understanding this dynamic, it's impossible to fully unlock the potential of parallel thinking[cite: 65, 66].
+                Even if a model learns this skill, its strategic role and underlying mechanisms are a "black box". How does the model's strategy evolve during training? Without understanding this dynamic, it's impossible to fully unlock the potential of parallel thinking.
               </div>
             </article>
         </div>
@@ -310,7 +310,7 @@
             <div class="column is-half">
                 <div class="content has-text-justified">
                     <p>
-                      To open the "black box", we provide the first empirical evidence of how an LLM's reasoning strategy with parallel thinking evolves[cite: 79]. Our analysis reveals a clear strategic shift: the model initially leverages parallel paths for <strong>exploration</strong>, but as it gains proficiency, it shifts towards using them for <strong>verification</strong>.
+                      To open the "black box", we provide the first empirical evidence of how an LLM's reasoning strategy with parallel thinking evolves. Our analysis reveals a clear strategic shift: the model initially leverages parallel paths for <strong>exploration</strong>, but as it gains proficiency, it shifts towards using them for <strong>verification</strong>.
                     </p>
                 </div>
                  <button class="button is-info is-outlined is-small" id="toggle-cases-btn">Show Supporting Case Studies</button>
@@ -346,7 +346,7 @@
             <div class="column is-half">
                 <div class="content has-text-justified">
                     <p>
-                        We conceptualize and validate that parallel thinking can serve as a structured exploration "scaffold"[cite: 80]. By temporarily forcing the model to explore with parallel paths, we guide it toward more robust policy spaces. This temporary phase unlocks a higher performance ceiling after RL, yielding a **42.9% improvement** over the baseline and reaching a peak accuracy of **25.6% on AIME25**.
+                        We conceptualize and validate that parallel thinking can serve as a structured exploration "scaffold". By temporarily forcing the model to explore with parallel paths, we guide it toward more robust policy spaces. This temporary phase unlocks a higher performance ceiling after RL, yielding a **42.9% improvement** over the baseline and reaching a peak accuracy of **25.6% on AIME25**.
                     </p>
                 </div>
             </div>
