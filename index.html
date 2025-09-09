@@ -47,7 +47,7 @@
         width: 100%;
         border-collapse: collapse;
         margin: 2rem 0;
-        font-size: 0.9em; /* Smaller font for dense tables */
+        font-size: 0.9em;
     }
     .results-table th, .results-table td {
         border: 1px solid #dbdbdb;
@@ -76,6 +76,17 @@
         border: 1px solid #ddd;
         border-radius: 5px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    /* Styles for the collapsible section */
+    .collapsible-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out, margin-top 0.5s ease-in-out;
+        margin-top: 0 !important;
+    }
+    .collapsible-content.is-active {
+        max-height: 1000px; /* Large enough to fit content */
+        margin-top: 2rem !important;
     }
     @media screen and (max-width: 768px) {
         .case-study-container {
@@ -318,11 +329,31 @@
                 <p>
                   Our analysis reveals a clear strategic evolution: the model initially leverages parallel paths for computational exploration, but as it gains proficiency, its strategy shifts towards using them for multi-perspective verification to confirm the final answer. This is shown by the relative position of the <code>&lt;Parallel&gt;</code> block moving later in the generation process as training progresses.
                 </p>
+                 <button class="button is-info is-outlined is-small" id="toggle-cases-btn" style="margin-top: 1rem;">Show Supporting Case Studies</button>
             </div>
         </div>
         <div class="column is-half">
             <img src="https://i.imgur.com/iC5uS9u.png" alt="Graph showing the relative position of the parallel block during RL training">
             <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 3 from the paper: Positional dynamics of the <code>&lt;Parallel&gt;</code> block.</p>
+        </div>
+    </div>
+
+    <div id="case-studies-collapsible" class="collapsible-content">
+        <div class="columns is-centered">
+            <div class="column is-four-fifths">
+                <div class="case-study-container">
+                    <div class="case-study">
+                        <h4 class="title is-5 has-text-centered">Early Stage: Exploration</h4>
+                        <img src="https://i.imgur.com/u15j6mC.png" alt="Case study of an early-stage model using parallel thinking for exploration.">
+                        <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 5 from the paper: An early-stage model explores two distinct algebraic methods to find possible answers.</p>
+                    </div>
+                    <div class="case-study">
+                        <h4 class="title is-5 has-text-centered">Late Stage: Verification</h4>
+                        <img src="https://i.imgur.com/N748v2L.png" alt="Case study of a late-stage model using parallel thinking for verification.">
+                        <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 6 from the paper: A late-stage model first derives a solution, then uses the parallel block to verify its conclusion.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -343,30 +374,7 @@
             <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 4 from the paper: Two-stage training with parallel reasoning as a mid-training exploration scaffold.</p>
         </div>
     </div>
-    </div>
-</section>
-
-<section class="section" style="background-color: #f9f9f9;">
-    <div class="container is-max-desktop">
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
-            <h2 class="title is-3">Case Studies: Exploration vs. Verification</h2>
-            <p class="subtitle">These examples from early and late-stage models illustrate the learned shift in strategy, confirming our findings on the evolution of parallel thinking behavior.</p>
-          </div>
-        </div>
-        <div class="case-study-container">
-            <div class="case-study">
-                <h4 class="title is-5 has-text-centered">Early Stage: Exploration</h4>
-                <img src="https://i.imgur.com/u15j6mC.png" alt="Case study of an early-stage model using parallel thinking for exploration.">
-                <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 5 from the paper: An early-stage model explores two distinct algebraic methods to find possible answers.</p>
-            </div>
-            <div class="case-study">
-                <h4 class="title is-5 has-text-centered">Late Stage: Verification</h4>
-                <img src="https://i.imgur.com/N748v2L.png" alt="Case study of a late-stage model using parallel thinking for verification.">
-                <p class="is-size-7 has-text-centered" style="margin-top: 0.5rem;">Figure 6 from the paper: A late-stage model first derives a solution, then uses the parallel block to verify its conclusion from different perspectives.</p>
-            </div>
-        </div>
-    </div>
+  </div>
 </section>
 
 <section class="section" id="BibTeX">
@@ -403,6 +411,25 @@
     </div>
   </div>
 </footer>
+
+<script>
+  // Script for the collapsible case studies
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('toggle-cases-btn');
+    const content = document.getElementById('case-studies-collapsible');
+
+    if (toggleBtn && content) {
+      toggleBtn.addEventListener('click', () => {
+        content.classList.toggle('is-active');
+        if (content.classList.contains('is-active')) {
+          toggleBtn.textContent = 'Hide Supporting Case Studies';
+        } else {
+          toggleBtn.textContent = 'Show Supporting Case Studies';
+        }
+      });
+    }
+  });
+</script>
 
 </body>
 </html>
