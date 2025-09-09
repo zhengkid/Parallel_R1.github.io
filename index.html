@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -465,4 +465,1244 @@
 </footer>
 
 </body>
+</html>
+ -->
+
+ <!doctype html>
+<html lang="en">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+
+    <head>
+        <title>Parallel-R1: Towards Parallel Thinking via Reinforcement Learning</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+
+        
+        <style>
+            :root {
+                --primary: #2563eb;
+                --secondary: #4f46e5;
+                --accent: #7c3aed;
+                --background: #f0f5ff;  /* Light blue background */
+                --text: #1e293b;
+            }
+
+            .header-wrapper {
+                background: linear-gradient(135deg, var(--background), #f5f3ff);
+                padding: 2rem 0;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .header-wrapper::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(45deg, rgba(37, 99, 235, 0.05), rgba(124, 58, 237, 0.05));
+                z-index: 0;
+            }
+
+            .header-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 2rem;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+                align-items: center;
+                position: relative;
+                z-index: 1;
+            }
+
+            .header-content h1 {
+                font-size: 3.5rem;
+                margin: 0;
+                background: linear-gradient(45deg, var(--primary), var(--accent));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .header-content h2 {
+                font-size: 1.8rem;
+                font-weight: 500;
+                color: #666;
+                margin: 1rem 0 2rem;
+            }
+
+            .emphasis-text {
+                font-size: 1.5rem;
+                font-weight: 500;
+                margin: 2rem 0;
+                padding: 1rem 1.5rem;
+                background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1));
+                border-left: 4px solid var(--accent);
+                border-radius: 0 8px 8px 0;
+                color: var(--primary);
+            }
+
+            .emphasis-text strong {
+                color: var(--accent);
+            }
+
+            .header-image {
+                position: relative;
+            }
+
+            .header-image img {
+                width: 100%;
+                border-radius: 1rem;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .header-image::before {
+                content: '';
+                position: absolute;
+                top: 1rem;
+                right: -1rem;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(45deg, var(--primary), var(--accent));
+                border-radius: 1rem;
+                z-index: -1;
+                opacity: 0.8;
+            }
+
+            /* Rest of your existing styles... */
+
+            .icon-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 2rem;
+                margin: 2rem 0;
+            }
+
+            .icon-item {
+                background: white;
+                padding: 1.5rem;
+                border-radius: 1rem;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                transition: transform 0.2s;
+            }
+
+            .button-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                margin-top: 2rem;
+            }
+
+            .button {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.75rem 1.5rem;
+                border-radius: 0.5rem;
+                text-decoration: none;
+                font-weight: 500;
+                transition: all 0.2s;
+                background: white;
+                color: var(--text);
+                border: 1px solid #e5e7eb;
+            }
+
+            .paper-link {
+                background: linear-gradient(45deg, var(--primary), var(--secondary));
+                color: white;
+                border: none;
+            }
+
+            .button:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            }
+            @media (max-width: 768px) {
+                .header-container {
+                    grid-template-columns: 1fr;
+                }
+                .header-content h1 {
+                    font-size: 2.8rem;
+                }
+                
+                .header-content h2 {
+                    font-size: 1.5rem;
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="header-wrapper">
+            <div class="header-container">
+                <div class="header-content">
+                    <h1>Parallel-R1</h1>
+                    <h2>Towards Parallel Thinking via Reinforcement Learning</h2>
+                    <p>
+                        [cite_start]We introduce Parallel-R1, the first reinforcement learning (RL) framework designed to teach large language models to perform parallel thinking for complex mathematical reasoning tasks. [cite: 3, 9]
+                    </p>
+
+                    <div class="emphasis-text">
+                        Teaching LLMs to think in <strong>parallel</strong>, not just in sequence.
+                    </div>
+
+                    <div class="button-container">
+                        <a href="https://arxiv.org/abs/2409.XXXXX" class="button paper-link">
+                            <i class="ai ai-arxiv"></i>
+                            arXiv (coming soon)
+                        </a>
+                        <a href="https://github.com/zhengkid/Parallel-R1" class="button">
+                            <i class="fab fa-github"></i>
+                            Code
+                        </a>
+                    </div>
+                </div>
+                <div class="header-image">
+                    <img src="https://i.imgur.com/vHq4gYd.png" alt="Parallel-R1 Overview" class="teaser-image">
+                </div>
+            </div>
+        </div>
+    </body>
+    <div class="byline">
+        <div class="byline-container">
+            <p class="authors">
+                <a href="#" class="author-link" target="_blank">Tong Zheng<sup>1,2,*,†</sup></a> &emsp;
+                <a href="#" class="author-link" target="_blank">Hongming Zhang<sup>1</sup></a> &emsp;
+                <a href="#" class="author-link" target="_blank">Wenhao Yu<sup>1</sup></a> &emsp;
+                <a href="#" class="author-link" target="_blank">Xiaoyang Wang<sup>1</sup></a> &emsp;
+                <a href="#" class="author-link" target="_blank">Xinyu Yang<sup>3</sup></a> &emsp;
+                <a href="#" class="author-link" target="_blank">Runpeng Dai<sup>1,4</sup></a> &emsp;
+                <br>
+                <a href="#" class="author-link" target="_blank">Rui Liu<sup>2</sup></a> &emsp;
+                <a href="#" class="author-link" target="_blank">Huiwen Bao<sup>5</sup></a> &emsp;
+                <a href="#" class="author-link" target="_blank">Chengsong Huang<sup>6</sup></a> &emsp;
+                <a href="#" class="author-link" target="_blank">Heng Huang<sup>2</sup></a> &emsp;
+                <a href="#" class="author-link" target="_blank">Dong Yu<sup>1</sup></a>
+            </p>
+            <div class="affiliations">
+                <p>
+                    <a href="#" class="affiliation-link" target="_blank"><sup>1</sup>Tencent AI Lab Seattle</a> &emsp;
+                    <a href="#" class="affiliation-link" target="_blank"><sup>2</sup>University of Maryland, College Park</a> &emsp;
+                    <a href="#" class="affiliation-link" target="_blank"><sup>3</sup>Carnegie Mellon University</a> &emsp;
+                    <br>
+                    <a href="#" class="affiliation-link" target="_blank"><sup>4</sup>University of North Carolina at Chapel Hill</a> &emsp;
+                    <a href="#" class="affiliation-link" target="_blank"><sup>5</sup>City University of Hong Kong</a> &emsp;
+                    <a href="#" class="affiliation-link" target="_blank"><sup>6</sup>Washington University in St. Louis</a>
+                </p>
+            </div>
+            <p class="author-notes" style="text-align: center;">
+                <span class="author-note"><sup>*</sup>Work done during an internship at Tencent AI Lab Seattle</span> &emsp;
+                <span class="author-note"><sup>†</sup>Corresponding author</span>
+            </p>
+        </div>
+        
+        <style>
+            .byline {
+                margin: 2rem 0;
+                padding: 1rem 0;
+                border-top: 1px solid rgba(0,0,0,0.1);
+                border-bottom: 1px solid rgba(0,0,0,0.1);
+            }
+            
+            .byline-container {
+                max-width: 900px;
+                margin: 0 auto;
+                text-align: center;
+            }
+            
+            .authors {
+                font-size: 1.1rem;
+                line-height: 2;
+                margin-bottom: 1rem;
+            }
+            
+            .author-link {
+                color: var(--text);
+                text-decoration: none;
+                transition: color 0.2s;
+                white-space: nowrap;
+            }
+            
+            .author-link:hover {
+                color: var(--primary);
+            }
+            
+            .affiliations {
+                font-size: 1rem;
+                color: #666;
+                margin: 1rem 0;
+            }
+            
+            .affiliation-link {
+                color: #666;
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+            
+            .affiliation-link:hover {
+                color: var(--primary);
+            }
+            
+            .author-notes {
+                font-size: 0.9rem;
+                color: #666;
+            }
+            
+            .author-note {
+                display: inline-block;
+                margin: 0 0.5rem;
+            }
+            
+            sup {
+                font-size: 0.75em;
+                line-height: 0;
+                position: relative;
+                vertical-align: baseline;
+                top: -0.5em;
+            }
+        </style>
+    </div>
+
+    <div class="text abstract">
+        <style>
+            .text.abstract {
+                max-width: 85%;
+                margin: 2rem auto;
+                font-size: 1.1rem;
+                line-height: 1.6;
+                color: var(--text);
+            }
+    
+            .intro-highlight {
+                text-align: center;
+                padding: 2rem;
+                margin: 2rem 0;
+                background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(124, 58, 237, 0.05));
+                border-radius: 1rem;
+            }
+    
+            .highlight-text {
+                font-size: 1.3rem;
+                font-weight: 500;
+                color: var(--primary);
+                line-height: 1.5;
+                max-width: 800px;
+                margin: 0 auto;
+            }
+    
+            .main-points {
+                display: grid;
+                gap: 2rem;
+                margin: 3rem 0;
+            }
+    
+            .point-card {
+                background: white;
+                border-radius: 1rem;
+                padding: 2rem;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                display: flex;
+                gap: 1.5rem;
+                align-items: flex-start;
+            }
+    
+            .point-number {
+                background: linear-gradient(45deg, var(--primary), var(--accent));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-size: 1.5rem;
+                font-weight: bold;
+                line-height: 1;
+            }
+    
+            .point-content {
+                flex: 1;
+            }
+    
+            .point-content strong {
+                color: var(--primary);
+            }
+    
+            .nav-buttons {
+                display: flex;
+                justify-content: center;
+                gap: 2rem;
+                margin: 3rem 0;
+            }
+    
+            .nav-button {
+                padding: 1.2rem 2rem;
+                border-radius: 1rem;
+                border: none;
+                background: white;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                color: var(--text);
+                font-size: 1.1rem;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+                min-width: 200px;
+            }
+    
+            .nav-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                color: var(--primary);
+            }
+    
+            .nav-button img {
+                width: 32px;
+                height: 32px;
+                margin-bottom: 0.5rem;
+            }
+    
+            .button-label {
+                font-size: 0.9rem;
+                color: #666;
+            }
+    
+            .click-hint {
+                text-align: center;
+                color: #666;
+                margin-top: 1rem;
+                font-size: 0.9rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            .intro-text {
+                max-width: 800px;
+                margin: 2rem auto;
+                font-size: 1.1rem;
+                line-height: 1.8;
+                color: var(--text);
+            }
+
+            .intro-text strong {
+                color: var(--primary);
+                font-weight: 500;
+            }
+        </style>
+    
+    <div class="intro-text">
+        <p>
+            [cite_start]Parallel thinking enhances the reasoning of LLMs by exploring multiple paths at once. [cite: 7] [cite_start]However, training this skill is hard; existing methods rely on supervised fine-tuning (SFT) which just encourages imitation. [cite: 8] We propose <strong>Parallel-R1</strong>, the first Reinforcement Learning framework to instill true parallel thinking. [cite_start]Our progressive curriculum starts with SFT on easy tasks to learn the format, then uses RL to generalize this skill to harder problems, boosting accuracy and unlocking novel reasoning strategies. [cite: 9, 10, 11]
+        </p>
+    </div>
+    
+        <div class="main-points">
+            <div class="point-card">
+                <div class="point-number">1</div>
+                <div class="point-content">
+                    [cite_start]We introduce the <strong>first RL framework</strong> to learn parallel thinking from scratch on general math reasoning tasks, enabled by a progressive curriculum and novel reward design. [cite: 83]
+                </div>
+            </div>
+    
+            <div class="point-card">
+                <div class="point-number">2</div>
+                <div class="point-content">
+                    [cite_start]We provide a deep analysis of the learning dynamics, revealing that the model’s strategy evolves from <strong>early-stage exploration to late-stage verification</strong>. [cite: 84]
+                </div>
+            </div>
+    
+            <div class="point-card">
+                <div class="point-number">3</div>
+                <div class="point-content">
+                    [cite_start]We validate that parallel thinking can serve as a <strong>mid-training exploration scaffold</strong>, a temporary phase that helps RL discover better policies and achieve a higher performance ceiling. [cite: 85]
+                </div>
+            </div>
+        </div>
+    
+        <div class="nav-buttons">
+            <a href="#findings" class="nav-button">
+                <img src="https://i.imgur.com/uQ2B5gD.png" alt="Findings">
+                Key Findings
+                <span class="button-label">Exploration, Verification, Scaffolding</span>
+            </a>
+            <a href="#method" class="nav-button">
+                <img src="https://i.imgur.com/4xPqYI3.png" alt="Method">
+                Parallel-R1 Method
+                <span class="button-label">Progressive RL Curriculum</span>
+            </a>
+            <a href="#results" class="nav-button">
+                <img src="https://i.imgur.com/gK61a8T.png" alt="Results">
+                Results
+                <span class="button-label">Performance on Math Benchmarks</span>
+            </a>
+        </div>
+    
+        <div class="click-hint">
+            <img src="https://i.imgur.com/1fA8bWf.gif" style="width: 1.5rem">
+            <span>Click to explore each aspect in detail</span>
+        </div>
+    </div>
+
+
+
+
+    <style>
+        .demo-section {
+            background: linear-gradient(135deg, #f8faff 0%, #faf5ff 100%);
+            padding: 4rem 0;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+    
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+    
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+    
+        .demo-showcase {
+            width: 80%;
+            margin: 0 auto;
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    
+        .demo-content {
+            position: relative;
+        }
+    
+        .demo-gif {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    
+        .demo-label {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    
+        .demo-description {
+            padding: 1.5rem;
+            text-align: center;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+    
+        .demo-description h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+    
+        .demo-description p {
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+        }
+    </style>
+    
+    <section class="demo-section">
+        <div class="demo-container">
+            <div class="section-title">
+                <h2>Parallel Thinking in Action</h2>
+            </div>
+    
+            <div class="demo-showcase">
+                <div class="demo-content">
+                    <img src="https://i.imgur.com/L3EwYbf.png" alt="Parallel-R1 Case Studies" class="demo-gif">
+                </div>
+                <div class="demo-description">
+                    <h3>From Exploration to Verification</h3>
+                    <p>Our analysis shows that the model's strategy evolves. Early in training, it uses parallel paths for broad exploration to find a solution. [cite_start]Later, it learns a more risk-averse strategy, using a single path to find an answer and then deploying parallel thinking for multi-perspective verification. [cite: 318, 335, 339, 340]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="findings" id="findings">
+        <style>
+            .findings {
+                background: linear-gradient(135deg, #f8faff 0%, #faf5ff 100%);
+                padding: 4rem 0;
+            }
+    
+            .findings-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 2rem;
+            }
+    
+            .section-title {
+                text-align: center;
+                margin-bottom: 3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+                background: linear-gradient(45deg, var(--primary), var(--accent));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin-bottom: 1rem;
+            }
+    
+            .finding-card {
+                background: white;
+                border-radius: 1rem;
+                padding: 2rem;
+                margin-bottom: 2rem;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+            }
+    
+            .finding-header {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                cursor: pointer;
+                padding-bottom: 1rem;
+            }
+    
+            .finding-header-content {
+                flex: 1;
+            }
+    
+            .finding-number {
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: var(--accent);
+                margin-bottom: 0.5rem;
+            }
+    
+            .finding-title {
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: var(--text);
+            }
+    
+            .finding-summary {
+                color: #666;
+                margin-top: 0.5rem;
+                font-size: 1.1rem;
+            }
+    
+            .toggle-button {
+                background: none;
+                border: none;
+                color: var(--primary);
+                cursor: pointer;
+                padding: 0.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: transform 0.3s ease;
+            }
+    
+            .toggle-button svg {
+                width: 24px;
+                height: 24px;
+            }
+    
+            .finding-details {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+                overflow: hidden;
+                max-height: 0;
+                opacity: 0;
+                transition: all 0.5s ease;
+            }
+    
+            .finding-details.expanded {
+                max-height: 2000px;
+                opacity: 1;
+                padding-top: 2rem;
+                border-top: 1px solid rgba(0,0,0,0.1);
+            }
+    
+            .finding-visual {
+                width: 90%;
+                display: flex;
+                justify-content: center;
+                align-items: center; /* Centers the content vertically */
+                background: #f8faff;
+                border-radius: 0.5rem;
+                padding: 1rem;
+            }
+    
+            .finding-visual img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 0.5rem;
+            }
+    
+            .finding-content {
+                padding: 0 1rem;
+            }
+    
+            .finding-description p {
+                line-height: 1.8;
+                font-size: 1.05rem;
+                color: #374151;
+                max-width: 85ch; /* For optimal line length */
+                margin: 0 auto 1rem;
+            }
+    
+            .finding-card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 12px -1px rgba(0, 0, 0, 0.1);
+            }
+             @media (max-width: 768px) {
+                .finding-details {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+
+    
+        <div class="findings-container">
+            <div class="section-title">
+                <h2>Key Findings</h2>
+                <p>Uncovering the Dynamics of Learning to Think in Parallel</p>
+            </div>
+    
+            <div class="finding-card">
+                <div class="finding-header" onclick="toggleDetails('finding1')">
+                    <div class="finding-header-content">
+                        <div class="finding-number">Finding 1</div>
+                        <div class="finding-title">Progressive Curriculum Solves the RL Cold-Start Problem</div>
+                        <div class="finding-summary">Models can't learn parallel thinking with RL from scratch. [cite_start]Our curriculum first teaches the format, then generalizes the skill. [cite: 58, 68]</div>
+                    </div>
+                    <button class="toggle-button" id="toggle1">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="finding-details" id="finding1">
+                    <div class="finding-visual">
+                        <img src="https://i.imgur.com/eBf2K5t.png" alt="Progressive Curriculum Diagram">
+                    </div>
+                    <div class="finding-content">
+                        <div class="finding-description">
+                            [cite_start]<p>LLMs pretrained on sequential text have a "cold-start" problem—they never generate parallel structures, so RL has nothing to reward. [cite: 58] [cite_start]Instead of relying on complex data pipelines for hard problems, we use simple prompting on easy math (like GSM8K) to generate a high-quality "cold-start" dataset (Parallel-GSM8K). [cite: 72, 73, 150] This initial SFT stage teaches the model the basic format of parallel thinking. [cite_start]From there, the model can transition to RL on more difficult tasks to explore and generalize this new ability. [cite: 73]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="finding-card">
+                <div class="finding-header" onclick="toggleDetails('finding2')">
+                    <div class="finding-header-content">
+                        <div class="finding-number">Finding 2</div>
+                        <div class="finding-title">Behavior Evolves from Exploration to Verification</div>
+                        <div class="finding-summary">As the model gets stronger, its strategy shifts. [cite_start]It first uses parallel paths to explore, then later to verify its answers. [cite: 318]</div>
+                    </div>
+                    <button class="toggle-button" id="toggle2">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="finding-details" id="finding2">
+                    <div class="finding-visual">
+                        <img src="https://i.imgur.com/iC5uS9u.png" alt="Relative Position of Parallel Block during Training">
+                    </div>
+                    <div class="finding-content">
+                        <div class="finding-description">
+                            <p>We analyzed where the model places its `<Parallel>` block during training. [cite_start]The graph shows a clear trend: as training progresses, the model moves the parallel block later in its reasoning process. [cite: 321] We interpret this as a strategic shift. [cite_start]Initially, when the model is weak, it uses parallel thinking early for computational exploration to discover a solution. [cite: 329] [cite_start]As its core reasoning improves, it learns a more risk-averse strategy: derive a high-confidence answer first, then use parallel thinking for multi-perspective verification at the end to maximize the final reward. [cite: 334, 335]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="finding-card">
+                <div class="finding-header" onclick="toggleDetails('finding3')">
+                    <div class="finding-header-content">
+                        <div class="finding-number">Finding 3</div>
+                        <div class="finding-title">Parallel Thinking as a Mid-Training Exploration Scaffold</div>
+                        [cite_start]<div class="finding-summary">Temporarily forcing parallel exploration during training helps the model find a better final policy, unlocking a higher performance ceiling. [cite: 343, 397]</div>
+                    </div>
+                    <button class="toggle-button" id="toggle3">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="finding-details" id="finding3">
+                    <div class="finding-visual">
+                        <img src="https://i.imgur.com/3YgD7Q1.png" alt="Two-stage training with parallel reasoning as a scaffold">
+                    </div>
+                    <div class="finding-content">
+                        <div class="finding-description">
+                            <p>We designed a two-stage experiment. In Stage 1 (0-200 steps), we use a reward that encourages parallel thinking, forcing the model to explore. [cite_start]In Stage 2 (after 200 steps), we switch to a standard accuracy-only reward. [cite: 378, 381] As shown in the graph, performance continues to climb in Stage 2 even as the parallel ratio drops. [cite_start]The model eventually reaches a peak accuracy of 25.6% on AIME25, significantly outperforming the baseline. [cite: 373, 384] [cite_start]This suggests the true value of parallel thinking is not just as an inference technique, but as a structured exploration mechanism that guides RL to a more robust region of the policy space. [cite: 386, 390]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <script>
+            function toggleDetails(id) {
+                const details = document.getElementById(id);
+                const button = document.getElementById('toggle' + id.slice(-1));
+                const isExpanded = details.classList.contains('expanded');
+                
+                // Collapse all other sections
+                document.querySelectorAll('.finding-details').forEach(el => {
+                    el.classList.remove('expanded');
+                });
+                document.querySelectorAll('.toggle-button').forEach(btn => {
+                    btn.style.transform = 'rotate(0deg)';
+                });
+                
+                // Toggle current section
+                if (!isExpanded) {
+                    details.classList.add('expanded');
+                    button.style.transform = 'rotate(180deg)';
+                }
+            }
+        </script>
+    </section>
+
+    <section class="vpit" id="method">
+        <style>
+            .vpit {
+                background: linear-gradient(135deg, #f8faff 0%, #faf5ff 100%);
+                padding: 4rem 0;
+            }
+    
+            .vpit-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 2rem;
+            }
+    
+            .section-title {
+                text-align: center;
+                margin-bottom: 3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+                background: linear-gradient(45deg, var(--primary), var(--accent));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin-bottom: 1rem;
+            }
+    
+            .feature-card {
+                background: white;
+                border-radius: 1rem;
+                padding: 2rem;
+                margin-bottom: 2rem;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+            }
+    
+            .feature-header {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+            }
+    
+            .feature-title {
+                font-size: 1.3rem;
+                font-weight: bold;
+                color: var(--primary);
+                margin-bottom: 0.5rem;
+            }
+    
+            .feature-summary {
+                color: #666;
+                font-size: 1.1rem;
+            }
+    
+            .feature-details {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+                overflow: hidden;
+                max-height: 0;
+                opacity: 0;
+                transition: all 0.3s ease;
+            }
+    
+            .feature-details.expanded {
+                max-height: 1000px;
+                opacity: 1;
+                margin-top: 1.5rem;
+                padding-top: 1.5rem;
+                border-top: 1px solid rgba(0,0,0,0.1);
+            }
+    
+            .method-diagram {
+                background: white;
+                padding: 2rem;
+                border-radius: 1rem;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                margin-bottom: 2rem;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+                align-items: center;
+            }
+    
+            .method-step {
+                text-align: center;
+                padding: 1.5rem;
+                background: #f8fafc;
+                border-radius: 0.75rem;
+                position: relative;
+            }
+    
+            .method-step:not(:last-child)::after {
+                content: '→';
+                position: absolute;
+                right: -1.5rem;
+                top: 50%;
+                transform: translateY(-50%);
+                color: var(--primary);
+                font-size: 1.5rem;
+            }
+    
+            .method-icon {
+                width: 48px;
+                height: 48px;
+                margin: 0 auto 1rem;
+            }
+    
+            .method-title {
+                font-weight: 600;
+                color: var(--primary);
+                margin-bottom: 0.5rem;
+            }
+    
+            .method-description {
+                font-size: 0.9rem;
+                color: #666;
+            }
+    
+            .toggle-button {
+                background: none;
+                border: none;
+                color: var(--primary);
+                cursor: pointer;
+                padding: 0.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: transform 0.3s ease;
+            }
+    
+            .toggle-button svg {
+                width: 24px;
+                height: 24px;
+            }
+        </style>
+    
+        <div class="vpit-container">
+            <div class="section-title">
+                <h2>The Parallel-R1 Framework</h2>
+                <p>A multi-stage progressive curriculum to bootstrap parallel thinking.</p>
+            </div>
+    
+            <div class="method-diagram">
+                <div class="method-step">
+                    <div class="method-title">Stage 1: Cold Start SFT</div>
+                    [cite_start]<div class="method-description">Fine-tune on Parallel-GSM8K to teach the model the basic format of parallel thinking with special tags (`<Parallel>`, `<Path>`, `<Summary>`). [cite: 188, 191]</div>
+                </div>
+                <div class="method-step">
+                    <div class="method-title">Stage 2: RL on Easy Math</div>
+                    [cite_start]<div class="method-description">Optionally perform small-scale RL on easy problems to stabilize the generation of parallel structures using a combined accuracy and format reward. [cite: 187, 198]</div>
+                </div>
+                <div class="method-step">
+                    <div class="method-title">Stage 3: RL on General Math</div>
+                    [cite_start]<div class="method-description">Apply RL on challenging datasets like DAPO to generalize the learned parallel thinking ability for improved task performance, using an accuracy-only reward. [cite: 202, 204, 205]</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="model-section" id="results">
+        <style>
+            .model-section {
+                background: linear-gradient(135deg, #f8faff 0%, #faf5ff 100%);
+                padding: 4rem 0;
+            }
+    
+            .section-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 2rem;
+            }
+    
+            .section-title {
+                text-align: center;
+                margin-bottom: 3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+                background: linear-gradient(45deg, var(--primary), var(--accent));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin-bottom: 1rem;
+            }
+    
+            .feature-card {
+                background: white;
+                border-radius: 1rem;
+                padding: 2rem;
+                margin-bottom: 2rem;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                /* cursor: pointer; */
+            }
+    
+            .feature-header {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+            }
+    
+            .feature-title {
+                font-size: 1.3rem;
+                font-weight: bold;
+                color: var(--primary);
+                margin-bottom: 0.5rem;
+            }
+    
+            .feature-summary {
+                color: #666;
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+        </style>
+    
+        <div class="section-container">
+            <div class="section-title">
+                <h2>Results</h2>
+                <p>Parallel-R1 consistently outperforms strong baselines on challenging math benchmarks.</p>
+            </div>
+            
+            <style>
+                .table-container {
+                    overflow-x: auto; /* Enables horizontal scrolling */
+                    overflow-y: hidden; /* Prevents vertical scrolling */
+                    max-width: 100%; /* Ensures the container doesn't exceed the page width */
+                    margin-bottom: 1rem; /* Adds spacing below the table */
+                }
+                
+                .data-table {
+                    border-collapse: collapse;
+                    width: 100%;
+                    font-size: 0.9rem;
+                    white-space: nowrap;
+                }
+                
+                .data-table th, .data-table td {
+                    padding: 0.75rem 1rem;
+                    text-align: center;
+                    border: 1px solid #e5e7eb;
+                }
+                
+                .data-table th {
+                    background-color: #f8fafc;
+                    font-weight: 600;
+                }
+                
+                .tb-hdr {
+                    background-color: #f1f5f9;
+                    font-weight: 700;
+                }
+                
+                .section-border {
+                    border-right: 2px solid #e5e7eb;
+                }
+                
+                .highlight-gray {
+                    background-color: #f8fafc;
+                }
+                
+                .highlight-orange td {
+                    background-color: #fff7ed;
+                    font-weight: 600;
+                }
+                
+                td .highlight {
+                    font-weight: bold;
+                    color: var(--primary);
+                }
+                 .table-scroll-hint {
+                    display: none;
+                    text-align: center;
+                    color: #666;
+                    padding: 0.5rem;
+                    font-size: 0.9rem;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 0.5rem;
+                    margin-bottom: 1rem;
+                }
+                 @media (max-width: 1024px) {
+                    .table-scroll-hint {
+                        display: flex;
+                    }
+                }
+            </style>
+            
+            <div class="feature-card">
+                 <div class="feature-header">
+                    <div>
+                        <div class="feature-title">Main Results on Mathematical Reasoning</div>
+                        [cite_start]<div class="feature-summary">Performance comparison on AIME25, AIME24, AMC23, and MATH for the Qwen-3-4B-Base model. [cite: 263]</div>
+                    </div>
+                </div>
+
+                <div class="table-scroll-hint">
+                    <img src="https://i.imgur.com/kP8qL7v.gif" style="width: 1.5rem">
+                    <span>Scroll horizontally to see more</span>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th rowspan="2">Method</th>
+                                <th rowspan="2">Parallel %</th>
+                                <th colspan="2">AIME25</th>
+                                <th colspan="2">AIME24</th>
+                                <th colspan="2">AMC23</th>
+                                <th rowspan="2">MATH<br>(Mean@1)</th>
+                                <th rowspan="2">Avg.</th>
+                            </tr>
+                             <tr>
+                                <th>Mean@16</th>
+                                <th>Pass@16</th>
+                                <th>Mean@16</th>
+                                <th>Pass@16</th>
+                                <th>Mean@16</th>
+                                <th>Pass@16</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                             <tr class="highlight-gray">
+                                <td colspan="10"><i>Baselines</i></td>
+                            </tr>
+                            <tr>
+                                <td>Qwen3-4B-Base</td>
+                                <td>0.0</td>
+                                <td>1.3</td>
+                                <td>10.2</td>
+                                <td>2.9</td>
+                                <td>16.5</td>
+                                <td>8.1</td>
+                                <td>51.2</td>
+                                <td>13.9</td>
+                                <td>6.6</td>
+                            </tr>
+                             <tr>
+                                <td>GRPO (DAPO)</td>
+                                <td>0.0</td>
+                                <td>14.8</td>
+                                <td>32.4</td>
+                                <td>18.5</td>
+                                <td>30.6</td>
+                                <td>63.6</td>
+                                <td>85.1</td>
+                                <td>83.5</td>
+                                <td>45.1</td>
+                            </tr>
+                             <tr>
+                                <td>+ RL on GSM8K</td>
+                                <td>0.0</td>
+                                <td>13.3</td>
+                                <td>26.3</td>
+                                <td>18.8</td>
+                                <td>34.9</td>
+                                <td>66.4</td>
+                                <td>82.2</td>
+                                <td>82.6</td>
+                                <td>45.3</td>
+                            </tr>
+                             <tr class="highlight-gray">
+                                <td colspan="10"><i>Our Method</i></td>
+                            </tr>
+                            <tr class="highlight-orange">
+                                <td>Parallel-R1-Seen</td>
+                                <td>27.3</td>
+                                <td>19.2</td>
+                                <td>38.9</td>
+                                <td>19.4</td>
+                                <td>37.1</td>
+                                <td>70.5</td>
+                                <td>85.0</td>
+                                <td>86.7</td>
+                                <td><b>48.9</b></td>
+                            </tr>
+                             <tr>
+                                <td>Parallel-R1-Unseen (S1)</td>
+                                <td>13.6</td>
+                                <td>17.7</td>
+                                <td>37.8</td>
+                                <td>18.3</td>
+                                <td>33.2</td>
+                                <td>69.7</td>
+                                <td>88.9</td>
+                                <td>82.6</td>
+                                <td>47.1</td>
+                            </tr>
+                            <tr>
+                                <td>Parallel-R1-Unseen (S2)</td>
+                                <td>63.0</td>
+                                <td>19.0</td>
+                                <td>42.2</td>
+                                <td>16.3</td>
+                                <td>31.8</td>
+                                <td>67.5</td>
+                                <td>91.5</td>
+                                <td>84.5</td>
+                                <td>46.8</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                 <div class="performance-text" style="font-size:0.9rem; color:#666; text-align:center; margin-top:1rem;">
+                    <p>
+                        [cite_start]Our progressive Parallel-R1 framework consistently outperforms all baselines. The top-performing variant, <strong>Parallel-R1-Seen</strong>, achieves the highest average score of 48.9, an 8.4% relative improvement over the strong GRPO baseline. [cite: 12, 268] [cite_start]This demonstrates the effectiveness of our curriculum, which goes beyond simple SFT or naive multi-stage RL. [cite: 269, 271]
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 </html>
